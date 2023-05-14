@@ -1,16 +1,16 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
-import {IPagination} from "../../interfaces/pagination.interface";
-import {IMovie} from "../../interfaces/movie.interface";
-import {movieService} from "../../services/movie.service";
+import {IPagination} from "../../interfaces";
+import {IMovie} from "../../interfaces";
+import {movieService} from "../../services";
 
 interface IState {
-    movie: IMovie;
+    movie: IMovie[];
 }
 
 const initialState: IState = {
-    movie: null
+    movie: []
 }
 
 const get = createAsyncThunk<IPagination<IMovie[]>, void>(
