@@ -4,3 +4,7 @@ export interface IPagination<T> {
     total_pages: number;
     total_results: number;
 }
+
+export interface IPaginateGenre<T> {
+    genres: T;
+}
