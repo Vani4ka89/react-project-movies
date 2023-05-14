@@ -4,8 +4,7 @@ import {Navigate, Route, Routes} from "react-router-dom";
 import {MainLayout} from "./layouts";
 import {HomePage} from "./pages";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {MoviesPage} from "./pages/MoviesPage/MoviesPage";
-import {GenresPage} from "./pages/GenresPage/GenresPage";
+import {MoviesPage, GenresPage} from "./pages";
 
 
 const App = () => {

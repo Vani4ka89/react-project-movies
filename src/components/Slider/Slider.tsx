@@ -9,7 +9,7 @@ const Slider = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="holder.js/800x400?text=First slide&bg=373940"
+                        src="https://cdn3.riastatic.com/photosnew/auto/photo/bmw__493949795fx.jpg"
                         alt="First slide"
                     />
                     <Carousel.Caption>
@@ -20,7 +20,7 @@ const Slider = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="holder.js/800x400?text=Second slide&bg=282c34"
+                        src="https://guru-tuning.com/images/content/168-7a4b6354f9bb2a70addafcbc5c6c9d13.gif"
                         alt="Second slide"
                     />
 
@@ -32,7 +32,7 @@ const Slider = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="holder.js/800x400?text=Third slide&bg=20232a"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6RR0DQoIxqEocVGT4-yYfjtjgcBNtrZGBrg&usqp=CAU"
                         alt="Third slide"
                     />
 
