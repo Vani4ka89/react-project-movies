@@ -1,15 +1,15 @@
 import React from 'react';
+import {Carousel} from "react-bootstrap";
 
-import Carousel from 'react-bootstrap/Carousel';
 
 const Slider = () => {
     return (
         <div>
-            <Carousel>
+            <Carousel fade>
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="https://aAgGrfBwna1nO4M2USxwFgK5O0t.jpg"
+                        src="holder.js/800x400?text=First slide&bg=373940"
                         alt="First slide"
                     />
                     <Carousel.Caption>
@@ -20,7 +20,7 @@ const Slider = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="https://gamerwall.pro/uploads/posts/2022-03/1648710748_1-gamerwall-pro-p-fon-na-temu-priroda-krasivie-1.jpg"
+                        src="holder.js/800x400?text=Second slide&bg=282c34"
                         alt="Second slide"
                     />
 
@@ -32,7 +32,7 @@ const Slider = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="https://gamerwall.pro/uploads/posts/2022-03/1648710748_1-gamerwall-pro-p-fon-na-temu-priroda-krasivie-1.jpg"
+                        src="holder.js/800x400?text=Third slide&bg=20232a"
                         alt="Third slide"
                     />
 
