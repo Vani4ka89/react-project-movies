@@ -6,14 +6,16 @@ import {IMovie} from "../../interfaces";
 import {movieService} from "../../services";
 
 interface IState {
-    movie: IMovie[];
+    movies: IMovie[];
+    page: number;
 }
 
 const initialState: IState = {
-    movie: []
+    movies: [],
+    page: 0
 }
 
-const get = createAsyncThunk<IPagination<IMovie[]>, void>(
+const getMovies = createAsyncThunk<IPagination<IMovie[]>, void>(
     'movieSlice/get',
     async (_, {rejectWithValue}) => {
         try {
@@ -32,14 +34,18 @@ const slice = createSlice({
     reducers: {},
     extraReducers: builder =>
         builder
-
+            .addCase(getMovies.fulfilled, (state, action) => {
+                const {page, results} = action.payload
+                state.movies = results
+                state.page = page
+            })
 });
 
 const {reducer: movieReducer, actions} = slice;
 
 const movieActions = {
     ...actions,
-    get
+    getMovies
 }
 
 export {
