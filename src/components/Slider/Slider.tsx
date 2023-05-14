@@ -9,7 +9,7 @@ const Slider = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="https://gamerwall.pro/uploads/posts/2022-03/1648710748_1-gamerwall-pro-p-fon-na-temu-priroda-krasivie-1.jpg"
+                        src="https://aAgGrfBwna1nO4M2USxwFgK5O0t.jpg"
                         alt="First slide"
                     />
                     <Carousel.Caption>

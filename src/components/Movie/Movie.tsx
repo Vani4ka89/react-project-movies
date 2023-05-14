@@ -19,7 +19,7 @@ const Movie: FC<IProps> = ({movie}) => {
             <div>video: {video}</div>
             <div>vote_average: {vote_average}</div>
             <div>adult: {adult}</div>
-            <div>backdrop_path: {backdrop_path}</div>
+            <div>backdrop_path: {`https://image.tmdb.org/t/p/w500/${backdrop_path}`}</div>
             <div>original_title: {original_title}</div>
             <div>original_language: {original_language}</div>
             <div>poster_path: {poster_path}</div>

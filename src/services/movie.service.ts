@@ -1,13 +1,18 @@
-import { IRes } from "../types/response.type";
-import { IMovie } from "../interfaces/movie.interface";
-import { IPagination } from "../interfaces/pagination.interface";
-import { axiosService } from "./axios.service";
-import { urls } from "../conatants/urls";
+import {IRes} from "../types";
+import {IMovie, IPagination} from "../interfaces";
+import {axiosService} from "./axios.service";
+import {accessToken, urls} from "../conatants";
 
 class MovieService {
-    get(): IRes<IPagination<IMovie[]>> {
+
+    getMovies(): IRes<IPagination<IMovie[]>> {
         return axiosService.get(urls.movies.discover)
     }
+
+    getAccessToken(): string {
+        return accessToken
+    }
+
 }
 
-export const movieService = new MovieService()
+export const movieService = new MovieService();

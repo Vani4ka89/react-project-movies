@@ -5,6 +5,7 @@ import {MainLayout} from "./layouts";
 import {HomePage} from "./pages";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {MoviesPage} from "./pages/MoviesPage/MoviesPage";
+import {GenresPage} from "./pages/GenresPage/GenresPage";
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
                 <Route index element={<Navigate to={'movies'}/>}/>
                 <Route path={'home'} element={<HomePage/>}/>
                 <Route path={'movies'} element={<MoviesPage/>}/>
+                <Route path={'genres'} element={<GenresPage/>}/>
             </Route>
         </Routes>
     );
