@@ -9,7 +9,7 @@ const MoviesPagination = () => {
     const [query, setQuery] = useSearchParams();
 
     const currentPage = +query.get('page') ? +query.get('page') : 1;
-    const prevClass = `page-item${page <= 1 ? ' disabled' : ''}`
+    const prevClass = `page-item${page <= 1 ? 'disabled' : ''}`
 
     const pageLink = `/movies/?page=`;
     const currentPageLink = `${pageLink}${currentPage}`;
