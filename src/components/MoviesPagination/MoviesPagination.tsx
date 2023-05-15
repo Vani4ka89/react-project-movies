@@ -8,7 +8,7 @@ const MoviesPagination = () => {
     const {page} = useAppSelector(state => state.movieReducer);
     const [query, setQuery] = useSearchParams();
 
-    const currentPage = +query.get('page');
+    const currentPage = +query.get('page') ? +query.get('page') : 1;
     const prevClass = `page-item${page <= 1 ? ' disabled' : ''}`
 
     const pageLink = `/movies/?page=`;
@@ -29,7 +29,6 @@ const MoviesPagination = () => {
         e.preventDefault()
         setQuery(prev => ({...prev, page: currentPage + 1}))
     }
-
 
 
     return (

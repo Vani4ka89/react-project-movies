@@ -5,7 +5,7 @@ import {Slider} from "../../components";
 const HomePage = () => {
     return (
         <div>
-
+            <Slider/>
         </div>
     );
 };
