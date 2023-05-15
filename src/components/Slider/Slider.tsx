@@ -9,7 +9,7 @@ const Slider = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="https://cdn3.riastatic.com/photosnew/auto/photo/bmw__493949795fx.jpg"
+                        src="https://wallpaperaccess.com/full/1512217.jpg"
                         alt="First slide"
                     />
                     <Carousel.Caption>
@@ -20,7 +20,7 @@ const Slider = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="https://guru-tuning.com/images/content/168-7a4b6354f9bb2a70addafcbc5c6c9d13.gif"
+                        src="https://img.myloview.com/murals/realistic-3d-film-strips-in-perspective-modern-cinema-background-template-poster-for-cinema-festival-movie-design-film-strip-for-advertisement-poster-brochure-banner-flyer-isometric-style-700-236805445.jpg"
                         alt="Second slide"
                     />
 
@@ -32,7 +32,7 @@ const Slider = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6RR0DQoIxqEocVGT4-yYfjtjgcBNtrZGBrg&usqp=CAU"
+                        src="https://image.slidesdocs.com/responsive-images/background/film-the-film-dark-black-light-marketing-powerpoint-background_caf69b222e__960_540.jpg"
                         alt="Third slide"
                     />
 

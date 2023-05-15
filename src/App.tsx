@@ -2,9 +2,9 @@ import React from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 
 import {MainLayout} from "./layouts";
-import {HomePage} from "./pages";
+import {MoviesPage, GenresPage, HomePage} from "./pages";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {MoviesPage, GenresPage} from "./pages";
 
 
 const App = () => {

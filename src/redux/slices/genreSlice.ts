@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice, isFulfilled, isRejectedWithValue} from "@
 import {AxiosError} from "axios";
 
 import {IError, IGenre, IPaginateGenre} from "../../interfaces";
-import {genreService} from "../../services/genre.service";
+import {genreService} from "../../services";
 
 interface IState {
     genres: IGenre[];

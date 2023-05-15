@@ -5,8 +5,8 @@ import {accessToken, urls} from "../conatants";
 
 class MovieService {
 
-    getMovies(): IRes<IPagination<IMovie[]>> {
-        return axiosService.get(urls.movies.discover)
+    getAllMovies(page = 1): IRes<IPagination<IMovie[]>> {
+        return axiosService.get(urls.movies.discover, {params: {page}})
     }
 
     getAccessToken(): string {
