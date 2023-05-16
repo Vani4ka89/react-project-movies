@@ -1,0 +1,9 @@
+.block {
+    height: 100vh;
+    background-image: url("https://pplprs.co.uk/wp-content/uploads/Cinema-Background-Music.jpg");
+    background-size: cover;
+}
+
+.block h1 {
+    color: azure;
+}

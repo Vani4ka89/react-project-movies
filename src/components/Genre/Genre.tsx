@@ -1,6 +1,8 @@
 import React, {FC} from 'react';
+import {NavLink} from "react-router-dom";
 
 import {IGenre} from "../../interfaces";
+import css from './Genre.module.css';
 
 interface IProps {
     genre: IGenre;
@@ -9,9 +11,11 @@ interface IProps {
 const Genre: FC<IProps> = ({genre}) => {
     const {id, name} = genre
     return (
-        <div>
-            <div>id: {id}</div>
-            <div>name: {name}</div>
+        <div className={css.box}>
+            {/*<div>id: {id}</div>*/}
+            <div className={css.link}>
+                <NavLink to={`${id}`}>{name}</NavLink>
+            </div>
             <hr/>
         </div>
     );

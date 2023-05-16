@@ -2,6 +2,7 @@ import React from 'react';
 import {useSearchParams} from "react-router-dom";
 
 import {useAppSelector} from "../../hooks";
+import css from './MoviesPagination.module.css';
 
 const MoviesPagination = () => {
 
@@ -32,7 +33,7 @@ const MoviesPagination = () => {
 
 
     return (
-        <div>
+        <div className={css.btnColor}>
             <nav aria-label="Page navigation example">
                 <ul className="pagination">
                     <li className={prevClass}>
