@@ -1,8 +1,9 @@
 import React, {FC, useRef} from 'react';
+import {useNavigate} from "react-router-dom";
 
 import {IMovie} from "../../interfaces";
 import css from './MoviesListCard.module.css';
-import {useNavigate} from "react-router-dom";
+import Rating from "@mui/material/Rating";
 
 interface IProps {
     movie: IMovie;
@@ -24,6 +25,7 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
                 <h5>{title}</h5>
                 <img src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`} onClick={() => info.current.click()}
                      alt=""/>
+                <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly />
                 <div>{vote_average}</div>
                 <div className="card-body">
                     <p className="card-text">{overview}</p>
