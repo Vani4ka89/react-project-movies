@@ -1,9 +1,11 @@
 import React, {FC, useRef} from 'react';
+import Rating from "@mui/material/Rating";
 import {useNavigate} from "react-router-dom";
 
 import {IMovie} from "../../interfaces";
 import css from './MoviesListCard.module.css';
-import Rating from "@mui/material/Rating";
+import {useAppSelector} from "../../hooks";
+
 
 interface IProps {
     movie: IMovie;
@@ -12,10 +14,15 @@ interface IProps {
 const MoviesListCard: FC<IProps> = ({movie}) => {
     const info = useRef<HTMLInputElement>();
     const navigate = useNavigate();
+    const {movie:movieInfo} = useAppSelector(state => state.movieReducer);
 
     const {
         backdrop_path, id, overview, title, release_date, vote_average
     } = movie
+
+    const handleClick = () => {
+        window.location.href = `info?id=${id}`;
+    };
 
     return (
         <div>
@@ -35,7 +42,9 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
                             <div className="btn-group">
                                 <button type="button" style={{display: 'none'}}
                                         className="btn btn-sm btn-outline-secondary"
-                                        onClick={() => navigate(`${id}`, {state: {...movie}})} ref={info}>More Info
+                                        onClick={handleClick}
+                                    // onClick={()=>navigate(id.toString(), {state:{...movieInfo}})}
+                                        ref={info}>More Info
                                 </button>
                             </div>
                         </div>

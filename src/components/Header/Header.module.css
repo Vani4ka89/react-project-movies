@@ -3,6 +3,8 @@
 }
 
 .logo img {
+    display: block;
+    border: 1px solid darkblue;
     border-radius: 50%;
     height: 40px;
     width: 40px;

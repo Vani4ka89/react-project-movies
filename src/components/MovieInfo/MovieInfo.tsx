@@ -1,19 +1,14 @@
-import React, {FC} from 'react';
+import React from 'react';
+import {useLocation} from "react-router-dom";
 
-import {IMovie} from "../../interfaces";
+const MovieInfo = () => {
 
-interface IProps {
-    movie: IMovie
-}
-
-const MovieInfo: FC<IProps> = ({movie}) => {
-    const {original_title, vote_average, overview } = movie;
+    const location = useLocation();
+    console.log(location);
 
     return (
         <div>
-            <div>original_title:{original_title}</div>
-            <div>vote_average:{vote_average}</div>
-            <div>overview:{overview}</div>
+            MovieInfo
         </div>
     );
 };

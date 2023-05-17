@@ -3,8 +3,10 @@ import {createAsyncThunk, createSlice, isFulfilled, isRejectedWithValue} from "@
 
 import {IPagination, IError, IMovie} from "../../interfaces";
 import {movieService} from "../../services";
+import {IOneMovie} from "../../interfaces/OneMovieInterface";
 
 interface IState {
+    movie: IOneMovie;
     movies: IMovie[];
     page: number;
     error: IError;
@@ -13,6 +15,7 @@ interface IState {
 }
 
 const initialState: IState = {
+    movie: null,
     movies: [],
     page: 1,
     error: null,
@@ -24,8 +27,21 @@ interface IPage {
     page: number
 }
 
+const getMovie = createAsyncThunk<IOneMovie, { id: number }>(
+    'movieSlice/getMovie',
+    async ({id}, {rejectWithValue}) => {
+        try {
+            const {data} = await movieService.getMovieById(id);
+            return data
+        } catch (e) {
+            const err = e as AxiosError
+            return rejectWithValue(err.response.data)
+        }
+    }
+)
+
 const getMovies = createAsyncThunk<IPagination<IMovie[]>, IPage>(
-    'movieSlice/get',
+    'movieSlice/getMovies',
     async ({page}, {rejectWithValue}) => {
         try {
             const {data} = await movieService.getAllMovies(page);
@@ -44,6 +60,10 @@ const slice = createSlice({
     reducers: {},
     extraReducers: builder =>
         builder
+            .addCase(getMovie.fulfilled, (state, action) => {
+                state.movie = action.payload
+            })
+
             .addCase(getMovies.fulfilled, (state, action) => {
                 const {page, results, total_pages, total_results} = action.payload
                 state.movies = results
@@ -66,6 +86,7 @@ const {reducer: movieReducer, actions} = slice;
 
 const movieActions = {
     ...actions,
+    getMovie,
     getMovies
 }
 

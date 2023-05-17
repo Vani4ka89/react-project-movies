@@ -27,7 +27,7 @@ const Header = () => {
                     </ul>
                     <div className={css.logo}>
                         <img
-                            src=""
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdxOqXuRWoYenOK3CKWtqYmth9K_EaQ5FmoA&usqp=CAU"
                             alt="logo"/>
                         <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search"
