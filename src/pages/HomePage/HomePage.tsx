@@ -1,11 +1,12 @@
 import React from 'react';
+import {MovieInfo} from "../../components/MovieInfo/MovieInfo";
+import {MoviesInfoPage} from "../MoviesInfoPage/MoviesInfoPage";
 
-import {Slider} from "../../components";
 
 const HomePage = () => {
     return (
         <div>
-            <Slider/>
+
         </div>
     );
 };

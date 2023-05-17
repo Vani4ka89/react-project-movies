@@ -9,6 +9,7 @@ class MovieService {
         return axiosService.get(urls.movies.discover, {params: {page}})
     }
 
+
     getAccessToken(): string {
         return accessToken
     }

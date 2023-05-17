@@ -8,8 +8,8 @@ interface IState {
     movies: IMovie[];
     page: number;
     error: IError;
-    total_pages:number;
-    total_results:number;
+    total_pages: number;
+    total_results: number;
 }
 
 const initialState: IState = {
@@ -36,6 +36,7 @@ const getMovies = createAsyncThunk<IPagination<IMovie[]>, IPage>(
         }
     }
 )
+
 
 const slice = createSlice({
     name: 'movieSlice',

@@ -2,6 +2,7 @@ export const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MzYwZjY5NjdkNzljM2I
 
 const baseURL = 'https://api.themoviedb.org/3';
 
+
 const urls = {
     movies: {
         discover: `/discover/movie`,

@@ -3,5 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("https://image.slidesdocs.com/responsive-images/background/film-the-film-dark-black-light-marketing-powerpoint-background_caf69b222e__960_540.jpg");
+    /*background-image: url("../../assets/images/cinema-pic.jpg");*/
+    background-repeat-x: no-repeat;
+    background-size: 100%;
 }
