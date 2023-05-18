@@ -12,7 +12,6 @@ const MoviesList = () => {
     const {movies} = useAppSelector(state => state.movieReducer);
     const [query] = useSearchParams();
 
-
     useEffect(() => {
         const currentPage = +query.get('page') ? +query.get('page') : 1;
         dispatch(movieActions.getMovies({page: currentPage}))

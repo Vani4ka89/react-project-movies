@@ -4,7 +4,7 @@ export interface IOneMovie {
     belongs_to_collection: {};
     budget: number;
     genres: [];
-    homepage: string;
+    homepage?: string;
     id: number;
     imdb_id: string;
     original_language: string;
@@ -14,12 +14,12 @@ export interface IOneMovie {
     poster_path: string;
     production_companies: [];
     production_countries: [];
-    release_date: string;
+    release_date: Date;
     revenue: number;
     runtime: number;
     spoken_languages: [];
     status: string;
-    tagline: string;
+    tagline?: string;
     title: string;
     video: boolean;
     vote_average: number;

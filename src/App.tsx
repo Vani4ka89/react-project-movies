@@ -2,8 +2,8 @@ import React from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 
 import {MainLayout} from "./layouts";
-import {MoviesPage, GenresPage, HomePage} from "./pages";
-import {MoviesInfoPage} from "./pages/MoviesInfoPage/MoviesInfoPage";
+import {MoviesPage, GenresPage, HomePage, AboutMoviePage} from "./pages";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -13,9 +13,8 @@ const App = () => {
             <Route path={'/'} element={<MainLayout/>}>
                 <Route index element={<Navigate to={'home'}/>}/>
                 <Route path={'home'} element={<HomePage/>}/>
-                <Route path={'movies'} element={<MoviesPage/>}>
-                    <Route path={':id'} element={<MoviesInfoPage/>}/>
-                </Route>
+                <Route path={'movies'} element={<MoviesPage/>}/>
+                <Route path={'info'} element={<AboutMoviePage/>}/>
                 <Route path={'genres'} element={<GenresPage/>}/>
             </Route>
         </Routes>

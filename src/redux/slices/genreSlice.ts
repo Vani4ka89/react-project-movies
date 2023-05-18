@@ -20,6 +20,7 @@ const getGenres = createAsyncThunk<IPaginateGenre<IGenre[]>, void>(
         try {
             const {data} = await genreService.getGenres();
             return data
+            // console.log(data);
         } catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response.data)
@@ -35,6 +36,7 @@ const slice = createSlice({
         builder
             .addCase(getGenres.fulfilled, (state, action) => {
                 const {genres} = action.payload
+                console.log(action.payload);
                 state.genres = genres
             })
 

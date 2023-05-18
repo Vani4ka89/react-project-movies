@@ -1,9 +1,8 @@
 import {AxiosError} from "axios";
 import {createAsyncThunk, createSlice, isFulfilled, isRejectedWithValue} from "@reduxjs/toolkit";
 
-import {IPagination, IError, IMovie} from "../../interfaces";
+import {IPagination, IError, IMovie, IOneMovie} from "../../interfaces";
 import {movieService} from "../../services";
-import {IOneMovie} from "../../interfaces/OneMovieInterface";
 
 interface IState {
     movie: IOneMovie;
@@ -16,9 +15,9 @@ interface IState {
 
 const initialState: IState = {
     movie: null,
+    error: null,
     movies: [],
     page: 1,
-    error: null,
     total_pages: null,
     total_results: null
 }

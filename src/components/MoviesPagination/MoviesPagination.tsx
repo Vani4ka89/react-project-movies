@@ -1,5 +1,5 @@
 import React from 'react';
-import {useSearchParams} from "react-router-dom";
+import {Link, useSearchParams} from "react-router-dom";
 
 import {useAppSelector} from "../../hooks";
 import css from './MoviesPagination.module.css';
@@ -37,18 +37,18 @@ const MoviesPagination = () => {
             <nav aria-label="Page navigation example">
                 <ul className="pagination">
                     <li className={prevClass}>
-                        <a className="page-link" href="#" onClick={(e) => prev(e)} aria-label="Previous">
+                        <Link className="page-link" to={''} onClick={(e) => prev(e)} aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
-                        </a>
+                        </Link>
                     </li>
                     <li className="page-item"><a className="page-link" href={currentPageLink}>{currentPage}</a></li>
                     <li className="page-item"><a className="page-link" href={nextPageLink}>{currentPage + 1}</a></li>
                     <li className="page-item"><a className="page-link" href={nextChildPageLink}>{currentPage + 2}</a>
                     </li>
                     <li className="page-item">
-                        <a className="page-link" href="#" onClick={(e) => next(e)} aria-label="Next">
+                        <Link className="page-link" to={''} onClick={(e) => next(e)} aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </nav>

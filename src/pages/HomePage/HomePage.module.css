@@ -1,9 +1,12 @@
 .block {
     height: 100vh;
-    background-image: url("https://pplprs.co.uk/wp-content/uploads/Cinema-Background-Music.jpg");
+    background-image: url("../../assets/images/posters-bg.jpg");
     background-size: cover;
 }
 
-.block h1 {
+.btn {
+    display: flex;
+    justify-content: center;
+    align-self: center;
     color: azure;
 }

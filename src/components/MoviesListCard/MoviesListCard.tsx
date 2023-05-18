@@ -1,10 +1,8 @@
-import React, {FC, useRef} from 'react';
+import React, {FC} from 'react';
 import Rating from "@mui/material/Rating";
-import {useNavigate} from "react-router-dom";
 
 import {IMovie} from "../../interfaces";
 import css from './MoviesListCard.module.css';
-import {useAppSelector} from "../../hooks";
 
 
 interface IProps {
@@ -12,22 +10,22 @@ interface IProps {
 }
 
 const MoviesListCard: FC<IProps> = ({movie}) => {
-    const info = useRef<HTMLInputElement>();
-    const navigate = useNavigate();
-    const {movie:movieInfo} = useAppSelector(state => state.movieReducer);
 
     const {
-        backdrop_path, id, overview, title, release_date, vote_average
+        backdrop_path, id,overview, title, release_date, vote_average
     } = movie
+    const imgSrc = backdrop_path ? `https://image.tmdb.org/t/p/w500/${backdrop_path}` : '#'
 
     const handleClick = () => {
         window.location.href = `info?id=${id}`;
     };
 
+
     return (
         <div>
-            <div className={css.card}>
-                <img src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`} onClick={() => info.current.click()}
+            <div className={css.card} onClick={handleClick}>
+                <img src={imgSrc}
+                     // onClick={() => info.current.click()}
                      alt=""/>
                 <div className={css.cardContent}>
                     <div className={css.additionalData}>
@@ -42,9 +40,7 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
                             <div className="btn-group">
                                 <button type="button" style={{display: 'none'}}
                                         className="btn btn-sm btn-outline-secondary"
-                                        onClick={handleClick}
-                                    // onClick={()=>navigate(id.toString(), {state:{...movieInfo}})}
-                                        ref={info}>More Info
+                                        >More Info
                                 </button>
                             </div>
                         </div>
