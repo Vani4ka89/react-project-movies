@@ -5,7 +5,7 @@ import {IPagination, IError, IMovie, IOneMovie} from "../../interfaces";
 import {movieService} from "../../services";
 
 interface IState {
-    movie: IOneMovie;
+    oneMovie: IOneMovie;
     movies: IMovie[];
     page: number;
     error: IError;
@@ -14,7 +14,7 @@ interface IState {
 }
 
 const initialState: IState = {
-    movie: null,
+    oneMovie: null,
     error: null,
     movies: [],
     page: 1,
@@ -60,7 +60,7 @@ const slice = createSlice({
     extraReducers: builder =>
         builder
             .addCase(getMovie.fulfilled, (state, action) => {
-                state.movie = action.payload
+                state.oneMovie = action.payload
             })
 
             .addCase(getMovies.fulfilled, (state, action) => {

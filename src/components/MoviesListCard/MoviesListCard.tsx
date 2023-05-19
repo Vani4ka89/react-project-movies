@@ -4,8 +4,6 @@ import {useNavigate} from "react-router-dom";
 
 import {IMovie} from "../../interfaces";
 import css from './MoviesListCard.module.css';
-import {useAppSelector} from "../../hooks";
-
 
 interface IProps {
     movie: IMovie;
@@ -15,11 +13,10 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
 
     const aboutMovie = useRef<HTMLInputElement>();
     const navigate = useNavigate();
-    const {movie:oneMovie} = useAppSelector(state => state.movieReducer);
     const {
         backdrop_path, id, overview, title, release_date, vote_average
     } = movie
-    const imgSrc = backdrop_path ? `https://image.tmdb.org/t/p/w500/${backdrop_path}` : '#'
+    const imgSrc = backdrop_path ? `https://image.tmdb.org/t/p/w500/${backdrop_path}` : '#';
 
     return (
         <div>
@@ -38,7 +35,7 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
                             <div className="btn-group">
                                 <button type="button" style={{display: 'none'}}
                                         className="btn btn-sm btn-outline-secondary"
-                                        onClick={() => navigate(`${id}`, {state: {...oneMovie}})} ref={aboutMovie}
+                                        onClick={() => navigate(`${id}`, {state: {...movie}})} ref={aboutMovie}
                                 >More Info
                                 </button>
                             </div>
