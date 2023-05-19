@@ -1,5 +1,6 @@
-import React, {FC} from 'react';
+import React, {FC, useRef} from 'react';
 import Rating from "@mui/material/Rating";
+import {useNavigate} from "react-router-dom";
 
 import {IMovie} from "../../interfaces";
 import css from './MoviesListCard.module.css';
@@ -11,22 +12,17 @@ interface IProps {
 
 const MoviesListCard: FC<IProps> = ({movie}) => {
 
+    const aboutMovie = useRef<HTMLInputElement>();
+    const navigate = useNavigate();
     const {
-        backdrop_path, id,overview, title, release_date, vote_average
+        backdrop_path, id, overview, title, release_date, vote_average
     } = movie
     const imgSrc = backdrop_path ? `https://image.tmdb.org/t/p/w500/${backdrop_path}` : '#'
 
-    const handleClick = () => {
-        window.location.href = `info?id=${id}`;
-    };
-
-
     return (
         <div>
-            <div className={css.card} onClick={handleClick}>
-                <img src={imgSrc}
-                     // onClick={() => info.current.click()}
-                     alt=""/>
+            <div className={css.card} onClick={() => aboutMovie.current.click()}>
+                <img src={imgSrc} alt=""/>
                 <div className={css.cardContent}>
                     <div className={css.additionalData}>
                         <Rating name="read-only" defaultValue={vote_average} readOnly max={10} precision={0.5}
@@ -40,7 +36,8 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
                             <div className="btn-group">
                                 <button type="button" style={{display: 'none'}}
                                         className="btn btn-sm btn-outline-secondary"
-                                        >More Info
+                                        onClick={() => navigate(`${id}`, {state: {...movie}})} ref={aboutMovie}
+                                >More Info
                                 </button>
                             </div>
                         </div>

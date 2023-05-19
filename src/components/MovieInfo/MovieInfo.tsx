@@ -1,28 +1,28 @@
 import React, {useEffect} from 'react';
-import {useSearchParams} from "react-router-dom";
 import Rating from "@mui/material/Rating";
 
 import {movieActions} from "../../redux";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import css from './MoviesInfo.module.css';
+import {NavLink} from "react-router-dom";
 
 const MovieInfo = () => {
 
     const dispatch = useAppDispatch();
-    const [query] = useSearchParams();
+
     const {movie} = useAppSelector(state => state.movieReducer);
+    const {id, genre_ids, original_title, title, vote_average, overview, poster_path} = movie;
+
 
     useEffect(() => {
-        dispatch(movieActions.getMovie({id: +query.get('id')}))
-    }, [dispatch, query])
+        dispatch(movieActions.getMovie({id: id}))
+    }, [dispatch, id])
 
-    if (!movie) {
-        return
-    }
+    // if (!movie) {
+    //     return
+    // }
 
-    const {original_title, title, genres, vote_average, overview, poster_path} = movie;
-    console.log(genres);
-    genres.map(genre => console.log(genre.name))
+
     return (
         <div className={css.infoBox}>
             <div>
@@ -32,7 +32,7 @@ const MovieInfo = () => {
             <div className={css.content}>
                 <h1>{original_title}</h1>
                 <div>
-                    {genres.map(genre => <span key={genre.id}>{genre.name}</span>)}
+                    {genre_ids.map(genre_id => <NavLink to={''}>{genre_id}</NavLink>)}
                 </div>
                 <p>Rating</p>
                 <div>

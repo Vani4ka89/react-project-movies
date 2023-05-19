@@ -36,7 +36,6 @@ const slice = createSlice({
         builder
             .addCase(getGenres.fulfilled, (state, action) => {
                 const {genres} = action.payload
-                console.log(action.payload);
                 state.genres = genres
             })
 
