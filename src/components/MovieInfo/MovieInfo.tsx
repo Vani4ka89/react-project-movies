@@ -3,16 +3,18 @@ import Rating from "@mui/material/Rating";
 // import {NavLink} from "react-router-dom";
 
 import {movieActions} from "../../redux";
-import {useAppDispatch, useAppLocation} from "../../hooks";
+import {useAppDispatch, useAppLocation, useAppSelector} from "../../hooks";
 import css from './MoviesInfo.module.css';
 import {IMovie} from "../../interfaces";
 
 const MovieInfo = () => {
 
     const dispatch = useAppDispatch();
+    // const {genres} = useAppSelector(state => state.movieReducer);
 
-    const {state:movie} = useAppLocation<IMovie>();
-    const {id,genre_ids, poster_path, title, original_title, vote_average, overview} = movie;
+    const {state: movie} = useAppLocation<IMovie>();
+
+    const {id, poster_path, title, original_title, vote_average, overview} = movie;
 
 
     useEffect(() => {
@@ -29,7 +31,7 @@ const MovieInfo = () => {
             <div className={css.content}>
                 <h1>{original_title}</h1>
                 <div>
-
+                    {/*<div key={}>{}</div>*/}
                 </div>
                 <p>Rating</p>
                 <div>
