@@ -10,8 +10,9 @@ import {IMovie} from "../../interfaces";
 const MovieInfo = () => {
 
     const dispatch = useAppDispatch();
-    const {state} = useAppLocation<IMovie>();
-    const {id, poster_path, title, original_title, vote_average, overview} = state;
+
+    const {state:movie} = useAppLocation<IMovie>();
+    const {id,genre_ids, poster_path, title, original_title, vote_average, overview} = movie;
 
 
     useEffect(() => {
@@ -28,7 +29,7 @@ const MovieInfo = () => {
             <div className={css.content}>
                 <h1>{original_title}</h1>
                 <div>
-                    {/*{genres.map(genre => <NavLink to={''}>genre</NavLink>)}*/}
+
                 </div>
                 <p>Rating</p>
                 <div>

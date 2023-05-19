@@ -10,7 +10,7 @@ class MovieService {
         return axiosService.get(urls.movies.discover, {params: {page}})
     }
 
-    getMovieById(id: number): IRes<IOneMovie> {
+    getMovieById(id: number): IRes<IMovie> {
         return axiosService.get(urls.movies.movieById(id))
     }
 
