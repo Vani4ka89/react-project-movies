@@ -1,9 +1,11 @@
+import {IGenre} from "./genre.interface";
+
 export interface IOneMovie {
     adult: boolean;
     backdrop_path: string;
     belongs_to_collection: {};
     budget: number;
-    genres: [];
+    genres: IGenre[];
     homepage?: string;
     id: number;
     imdb_id: string;

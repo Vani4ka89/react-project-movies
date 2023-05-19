@@ -20,8 +20,9 @@ const MovieInfo = () => {
         return
     }
 
-    const {original_title, title, vote_average, overview, poster_path} = movie;
-
+    const {original_title, title, genres, vote_average, overview, poster_path} = movie;
+    console.log(genres);
+    genres.map(genre => console.log(genre.name))
     return (
         <div className={css.infoBox}>
             <div>
@@ -30,12 +31,9 @@ const MovieInfo = () => {
             </div>
             <div className={css.content}>
                 <h1>{original_title}</h1>
-                {/*{genres.map(genre =>*/}
-                {/*    <div>*/}
-                {/*        <span>{genre[0]}</span>*/}
-                {/*        <span>{genre[1]}</span>*/}
-                {/*        <span>{genre[2]}</span>*/}
-                {/*    </div>)}*/}
+                <div>
+                    {genres.map(genre => <span key={genre.id}>{genre.name}</span>)}
+                </div>
                 <p>Rating</p>
                 <div>
                     <Rating name="read-only" defaultValue={vote_average} readOnly max={10} precision={0.1}

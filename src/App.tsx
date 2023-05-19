@@ -5,6 +5,7 @@ import {MainLayout} from "./layouts";
 import {MoviesPage, GenresPage, HomePage, AboutMoviePage} from "./pages";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {GenrePage} from "./pages/GenrePage/GenrePage";
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
                 <Route path={'movies'} element={<MoviesPage/>}/>
                 <Route path={'info'} element={<AboutMoviePage/>}/>
                 <Route path={'genres'} element={<GenresPage/>}/>
+                <Route path={'genres/:id'} element={<GenrePage/>}/>
             </Route>
         </Routes>
     );
