@@ -2,25 +2,22 @@ import React, {useEffect} from 'react';
 import Rating from "@mui/material/Rating";
 
 import {movieActions} from "../../redux";
-import {useAppDispatch, useAppSelector} from "../../hooks";
+import {useAppDispatch, useAppLocation} from "../../hooks";
 import css from './MoviesInfo.module.css';
 import {NavLink} from "react-router-dom";
+import {IMovie} from "../../interfaces";
 
 const MovieInfo = () => {
 
     const dispatch = useAppDispatch();
-
-    const {movie} = useAppSelector(state => state.movieReducer);
-    const {id, genre_ids, original_title, title, vote_average, overview, poster_path} = movie;
-
+    const {state} = useAppLocation<IMovie>();
+    const {id, poster_path, title, original_title, genre_ids, vote_average, overview} = state;
+    console.log(genre_ids);
 
     useEffect(() => {
         dispatch(movieActions.getMovie({id: id}))
     }, [dispatch, id])
 
-    // if (!movie) {
-    //     return
-    // }
 
 
     return (
