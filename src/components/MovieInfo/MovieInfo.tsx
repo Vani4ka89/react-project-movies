@@ -1,23 +1,22 @@
 import React, {useEffect} from 'react';
 import Rating from "@mui/material/Rating";
+import {NavLink} from "react-router-dom";
 
 import {movieActions} from "../../redux";
 import {useAppDispatch, useAppLocation} from "../../hooks";
 import css from './MoviesInfo.module.css';
-import {NavLink} from "react-router-dom";
-import {IMovie} from "../../interfaces";
+import {IOneMovie} from "../../interfaces";
 
 const MovieInfo = () => {
 
     const dispatch = useAppDispatch();
-    const {state} = useAppLocation<IMovie>();
-    const {id, poster_path, title, original_title, genre_ids, vote_average, overview} = state;
-    console.log(genre_ids);
+    const {state} = useAppLocation<IOneMovie>();
+    const {id, poster_path, title,genres, original_title, vote_average, overview} = state;
+
 
     useEffect(() => {
         dispatch(movieActions.getMovie({id: id}))
     }, [dispatch, id])
-
 
 
     return (
@@ -29,7 +28,7 @@ const MovieInfo = () => {
             <div className={css.content}>
                 <h1>{original_title}</h1>
                 <div>
-                    {genre_ids.map(genre_id => <NavLink to={''}>{genre_id}</NavLink>)}
+                    {genres.map(genre => <NavLink to={''}>genre</NavLink>)}
                 </div>
                 <p>Rating</p>
                 <div>
