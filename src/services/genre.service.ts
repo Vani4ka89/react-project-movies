@@ -1,5 +1,5 @@
 import {IRes} from "../types";
-import {IGenreList, IMovie, IMovieList} from "../interfaces";
+import {IGenreList, IMovie} from "../interfaces";
 import {axiosService} from "./axios.service";
 import {urls} from "../conatants";
 
