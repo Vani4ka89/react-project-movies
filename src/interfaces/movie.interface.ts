@@ -1,9 +1,11 @@
 import {IGenre} from "./genre.interface";
 
 export interface IMovieList {
+    id: number;
     page: number;
     results: IMovie[];
 }
+
 export interface IMovie {
     adult: boolean;
     backdrop_path: string;

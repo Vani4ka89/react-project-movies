@@ -10,13 +10,13 @@ interface IProps {
 }
 
 const MoviesListCard: FC<IProps> = ({movie}) => {
-
-    const navigate = useNavigate();
     const {
         backdrop_path, id, overview, title, release_date, vote_average
     } = movie
-    console.log(id);
+
     const imgPath = backdrop_path ? `https://image.tmdb.org/t/p/w500/${backdrop_path}` : '#';
+
+    const navigate = useNavigate();
 
     return (
         <div>

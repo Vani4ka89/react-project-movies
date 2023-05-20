@@ -8,7 +8,7 @@ const urls = {
         discover: `/discover/movie`,
         movieById: (id: number): string => `/movie/${id}`,
         genreList: `/genre/movie/list`,
-        moviesFromGenre: (id: number) => `/genre/${id}/movies`,
+        moviesOfGenre: (id: number) => `/genre/${id}/movies`,
     }
 };
 

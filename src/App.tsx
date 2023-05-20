@@ -6,7 +6,6 @@ import {MoviesPage, GenresPage, HomePage, AboutMoviePage} from "./pages";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {GenrePage} from "./pages/GenrePage/GenrePage";
-import {MovieInfo} from "./components";
 
 
 const App = () => {
@@ -16,9 +15,9 @@ const App = () => {
                 <Route index element={<Navigate to={'home'}/>}/>
                 <Route path={'home'} element={<HomePage/>}/>
                 <Route path={'movies'} element={<MoviesPage/>}/>
-                {/*<Route path={'movies/:id'} element={<AboutMoviePage/>}/>*/}
-                <Route path={'movies/:id'} element={<MovieInfo/>}/>
+                <Route path={'movies/:id'} element={<AboutMoviePage/>}/>
                 <Route path={'genres'} element={<GenresPage/>}/>
+
                 <Route path={'genres/:id'} element={<GenrePage/>}/>
             </Route>
         </Routes>
