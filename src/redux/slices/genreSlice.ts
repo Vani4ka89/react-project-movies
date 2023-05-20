@@ -1,26 +1,27 @@
 import {createAsyncThunk, createSlice, isFulfilled, isRejectedWithValue} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
-import {IError, IGenre, IPaginateGenre} from "../../interfaces";
+import {IError, IGenre, IGenreList} from "../../interfaces";
 import {genreService} from "../../services";
 
 interface IState {
+    genre:IGenre;
     genres: IGenre[];
     error: IError;
 }
 
 const initialState: IState = {
+    genre:null,
     genres: [],
     error: null
 }
 
-const getGenres = createAsyncThunk<IPaginateGenre<IGenre[]>, void>(
+const getGenres = createAsyncThunk<IGenreList, void>(
     'genreSlice/getGenres',
     async (_, {rejectWithValue}) => {
         try {
             const {data} = await genreService.getGenres();
             return data
-            // console.log(data);
         } catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response.data)
@@ -48,14 +49,14 @@ const slice = createSlice({
             })
 });
 
-const {reducer: genreReducer, actions} = slice;
+const {reducer: genresReducer, actions} = slice;
 
-const genreActions = {
+const genresActions = {
     ...actions,
     getGenres
 }
 
 export {
-    genreReducer,
-    genreActions
+    genresReducer,
+    genresActions
 }

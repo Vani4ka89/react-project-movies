@@ -1,34 +1,32 @@
 import {AxiosError} from "axios";
 import {createAsyncThunk, createSlice, isFulfilled, isRejectedWithValue} from "@reduxjs/toolkit";
 
-import {IPagination, IError, IMovie, IGenre, IOneMovie} from "../../interfaces";
+import {IError, IGenre, IMovie, IMovieList} from "../../interfaces";
 import {movieService} from "../../services";
 
 interface IState {
-    oneMovie: IOneMovie;
+    movie: IMovie;
+    aboutMovie: number;
     movies: IMovie[];
+    genreOfMovie: IGenre[];
     page: number;
-    genres:IGenre[];
     error: IError;
-    total_pages: number;
-    total_results: number;
 }
 
 const initialState: IState = {
-    oneMovie: null,
-    error: null,
+    movie: null,
+    aboutMovie: null,
     movies: [],
+    genreOfMovie: null,
     page: 1,
-    genres:null,
-    total_pages: null,
-    total_results: null
+    error: null,
 }
 
 interface IPage {
     page: number
 }
 
-const getMovie = createAsyncThunk<IOneMovie, { id: number }>(
+const getMovie = createAsyncThunk<IMovie, { id: number }>(
     'movieSlice/getMovie',
     async ({id}, {rejectWithValue}) => {
         try {
@@ -41,7 +39,7 @@ const getMovie = createAsyncThunk<IOneMovie, { id: number }>(
     }
 )
 
-const getMovies = createAsyncThunk<IPagination<IMovie[]>, IPage>(
+const getMovies = createAsyncThunk<IMovieList, IPage>(
     'movieSlice/getMovies',
     async ({page}, {rejectWithValue}) => {
         try {
@@ -58,21 +56,23 @@ const getMovies = createAsyncThunk<IPagination<IMovie[]>, IPage>(
 const slice = createSlice({
     name: 'movieSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        setAboutMovie: (state, action) => {
+            state.aboutMovie = action.payload
+        }
+    },
     extraReducers: builder =>
         builder
             .addCase(getMovie.fulfilled, (state, action) => {
-                state.oneMovie = action.payload
-                const {genres} = action.payload
-                state.genres = genres
+                const {genres, id} = action.payload
+                state.genreOfMovie = genres
+                state.movie = action.payload
             })
 
             .addCase(getMovies.fulfilled, (state, action) => {
-                const {page, results, total_pages, total_results} = action.payload
+                const {page, results} = action.payload
                 state.movies = results
                 state.page = page
-                state.total_pages = total_pages
-                state.total_results = total_results
             })
 
             .addMatcher(isFulfilled(), state => {
@@ -85,15 +85,15 @@ const slice = createSlice({
 
 });
 
-const {reducer: movieReducer, actions} = slice;
+const {reducer: moviesReducer, actions} = slice;
 
-const movieActions = {
+const moviesActions = {
     ...actions,
     getMovie,
     getMovies
 }
 
 export {
-    movieReducer,
-    movieActions
+    moviesReducer,
+    moviesActions
 }

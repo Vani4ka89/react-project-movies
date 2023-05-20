@@ -2,16 +2,16 @@ import React, {useEffect} from 'react';
 
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {Genre} from "../Genre/Genre";
-import {genreActions} from "../../redux";
+import {genresActions} from "../../redux";
 import css from './Genres.module.css';
 
 const Genres = () => {
 
-    const {genres} = useAppSelector(state => state.genreReducer);
+    const {genres} = useAppSelector(state => state.genresReducer);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(genreActions.getGenres())
+        dispatch(genresActions.getGenres())
     }, [dispatch])
 
     return (

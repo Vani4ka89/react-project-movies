@@ -6,7 +6,7 @@ import css from './MoviesPagination.module.css';
 
 const MoviesPagination = () => {
 
-    const {page} = useAppSelector(state => state.movieReducer);
+    const {page} = useAppSelector(state => state.moviesReducer);
     const [query, setQuery] = useSearchParams();
 
     const currentPage = +query.get('page') ? +query.get('page') : 1;

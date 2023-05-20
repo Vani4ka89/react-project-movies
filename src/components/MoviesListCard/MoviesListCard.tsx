@@ -1,4 +1,4 @@
-import React, {FC, useRef} from 'react';
+import React, {FC} from 'react';
 import Rating from "@mui/material/Rating";
 import {useNavigate} from "react-router-dom";
 
@@ -11,17 +11,17 @@ interface IProps {
 
 const MoviesListCard: FC<IProps> = ({movie}) => {
 
-    const aboutMovie = useRef<HTMLInputElement>();
     const navigate = useNavigate();
     const {
         backdrop_path, id, overview, title, release_date, vote_average
     } = movie
-    const imgSrc = backdrop_path ? `https://image.tmdb.org/t/p/w500/${backdrop_path}` : '#';
+    console.log(id);
+    const imgPath = backdrop_path ? `https://image.tmdb.org/t/p/w500/${backdrop_path}` : '#';
 
     return (
         <div>
-            <div className={css.card} onClick={() => aboutMovie.current.click()}>
-                <img src={imgSrc} alt=""/>
+            <div className={css.card} onClick={() => navigate(`${id}`, {state: {...movie}})}>
+                <img src={imgPath} alt={title}/>
                 <div className={css.cardContent}>
                     <div className={css.additionalData}>
                         <Rating name="read-only" defaultValue={vote_average} readOnly max={10} precision={0.5}
@@ -31,15 +31,7 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
                     <h5>{title}</h5>
                     <div className="card-body">
                         <p className="card-text">{overview}</p>
-                        <div className="d-flex justify-content-between align-items-center">
-                            <div className="btn-group">
-                                <button type="button" style={{display: 'none'}}
-                                        className="btn btn-sm btn-outline-secondary"
-                                        onClick={() => navigate(`${id}`, {state: {...movie}})} ref={aboutMovie}
-                                >More Info
-                                </button>
-                            </div>
-                        </div>
+                        <div className="d-flex justify-content-between align-items-center"></div>
                     </div>
                 </div>
             </div>
