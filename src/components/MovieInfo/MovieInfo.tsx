@@ -31,7 +31,7 @@ const MovieInfo = () => {
                 <h1>{original_title}</h1>
                 <div>
                     {genres.map(genre => (
-                        <NavLink className={css.link} to={`genre/${genre.id}`}>{genre.name}</NavLink>
+                        <NavLink className={css.link} to={`genre/${genre.id}`} key={genre.id}>{genre.name}</NavLink>
                     ))}
                 </div>
                 <p>Rating</p>

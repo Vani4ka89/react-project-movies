@@ -19,7 +19,7 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
     const navigate = useNavigate();
 
     return (
-        <div>
+        <div key={id}>
             <div className={css.card} onClick={() => navigate(`${id}`, {state: {...movie}})}>
                 <img src={imgPath} alt={title}/>
                 <div className={css.cardContent}>
