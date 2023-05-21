@@ -7,6 +7,7 @@ import {useAppDispatch, useAppSelector} from "../../hooks";
 import css from './MoviesInfo.module.css';
 
 const MovieInfo = () => {
+
     const dispatch = useAppDispatch();
 
     const {movie} = useAppSelector(state => state.moviesReducer);

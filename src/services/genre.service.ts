@@ -1,5 +1,5 @@
 import {IRes} from "../types";
-import {IGenreList, IMovie} from "../interfaces";
+import {IGenreList, IMovieList} from "../interfaces";
 import {axiosService} from "./axios.service";
 import {urls} from "../conatants";
 
@@ -8,7 +8,7 @@ class GenreService {
         return axiosService.get(urls.movies.genreList)
     }
 
-    getById(id: number): IRes<IMovie[]> {
+    getById(id: number): IRes<IMovieList> {
         return axiosService.get(urls.movies.moviesOfGenre(id))
     }
 }

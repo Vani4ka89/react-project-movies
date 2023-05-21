@@ -13,3 +13,5 @@ export * from './PosterPreview/PosterPreview';
 export * from './MovieInfo/MoviesInfo.module.css';
 export * from './StarsRating/StarsRating';
 export * from './UserInfo/UserInfo';
+export * from './GenreMovies/GenreMovies';
+export * from './GenreMovies/GenreMovies.module.css';
