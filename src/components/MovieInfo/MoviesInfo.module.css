@@ -5,7 +5,6 @@
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-    background-color: rgba(0, 139, 139, 0.55);
 }
 
 .infoBox img {

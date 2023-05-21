@@ -9,7 +9,7 @@ const Header = () => {
         <nav className="navbar navbar-expand-lg bg-body-tertiary"
              style={{position: 'static', top: '0', zIndex: '9', width: '100%', backgroundColor: 'darkslategray'}}>
             <div className="container-fluid">
-                <NavLink className="navbar-brand" to={'home'} style={{color: 'white'}}>Home</NavLink>
+                <NavLink className="navbar-brand" to={'home'} style={{color: 'white'}}></NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
