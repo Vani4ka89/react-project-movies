@@ -36,7 +36,6 @@ const getById = createAsyncThunk<IMovieList, {id:number}>(
     async ({id}, {rejectWithValue})=>{
         try {
             const {data} = await genreService.getById(id);
-            console.log(data);
             return data
         } catch (e) {
             const err = e as AxiosError
