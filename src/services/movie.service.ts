@@ -1,7 +1,7 @@
 import {IRes} from "../types";
 import {IMovie, IMovieList} from "../interfaces";
 import {axiosService} from "./axios.service";
-import {accessToken, urls} from "../conatants";
+import {accessToken, urls} from "../constants";
 
 class MovieService {
 

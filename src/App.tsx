@@ -7,7 +7,6 @@ import {MoviesPage, GenresListPage, AboutMoviePage} from "./pages";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {GenrePage} from "./pages/GenrePage/GenrePage";
 
-
 const App = () => {
     return (
         <Routes>

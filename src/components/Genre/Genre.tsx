@@ -12,8 +12,8 @@ const Genre: FC<IProps> = ({genre}) => {
     const {id, name} = genre
     return (
         <div className={css.box}>
-            <div className={css.link}>
-                <NavLink to={`${id}`}>{name}</NavLink>
+            <div>
+                <NavLink className={css.link} to={`${id}`}>{name}</NavLink>
             </div>
             <hr/>
         </div>

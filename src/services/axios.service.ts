@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import {baseURL} from "../conatants";
+import {baseURL} from "../constants";
 import {movieService} from "./movie.service";
 
 const axiosService = axios.create({baseURL});

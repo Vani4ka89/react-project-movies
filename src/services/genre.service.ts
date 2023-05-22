@@ -1,7 +1,7 @@
 import {IRes} from "../types";
 import {IGenreList, IMovieList} from "../interfaces";
 import {axiosService} from "./axios.service";
-import {urls} from "../conatants";
+import {urls} from "../constants";
 
 class GenreService {
     getGenres(): IRes<IGenreList> {
