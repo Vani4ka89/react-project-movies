@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import Rating from "@mui/material/Rating";
 import {useNavigate} from "react-router-dom";
+import Rating from "@mui/material/Rating";
 
 import {IMovie} from "../../interfaces";
 import css from './MoviesListCard.module.css';
@@ -13,10 +13,9 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
     const {
         backdrop_path, id, overview, title, release_date, vote_average
     } = movie
+    const navigate = useNavigate();
 
     const imgPath = backdrop_path ? `https://image.tmdb.org/t/p/w500/${backdrop_path}` : '#';
-
-    const navigate = useNavigate();
 
     return (
         <div key={id}>

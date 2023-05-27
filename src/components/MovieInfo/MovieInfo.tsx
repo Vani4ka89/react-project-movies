@@ -3,15 +3,15 @@ import {useParams} from "react-router-dom";
 import Rating from "@mui/material/Rating";
 
 import {moviesActions} from "../../redux";
-import {useAppDispatch, useAppSelector} from "../../hooks";
+import {useAppDispatch, useAppLocation} from "../../hooks";
 import css from './MoviesInfo.module.css';
 import GenreBadge from "../GenreBadge/GenreBadge";
+import {IMovie} from "../../interfaces";
 
 const MovieInfo = () => {
-    const dispatch = useAppDispatch();
-
-    const {movie} = useAppSelector(state => state.moviesReducer);
     const {id} = useParams();
+    const {state:movie} = useAppLocation<IMovie>();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(moviesActions.getMovie({id: +id}))

@@ -10,10 +10,11 @@ interface IProps {
 
 const Genre: FC<IProps> = ({genre}) => {
     const {id, name} = genre
+
     return (
         <div className={css.box}>
             <div>
-                <NavLink className={css.link} to={`${id}`}>{name}</NavLink>
+                <NavLink className={css.link} to={id.toString()}>{name}</NavLink>
             </div>
             <hr/>
         </div>

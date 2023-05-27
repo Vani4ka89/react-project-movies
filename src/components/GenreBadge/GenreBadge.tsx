@@ -6,11 +6,9 @@ import {moviesActions} from "../../redux";
 import css from "./GenreBadge.module.css";
 
 const GenreBadge = () => {
-
-    const dispatch = useAppDispatch();
-
-    const {movie} = useAppSelector(state => state.moviesReducer);
     const {id} = useParams();
+    const dispatch = useAppDispatch();
+    const {movie} = useAppSelector(state => state.moviesReducer);
 
     useEffect(() => {
         dispatch(moviesActions.getMovie({id: +id}))
@@ -24,7 +22,7 @@ const GenreBadge = () => {
     return (
         <div>
             {genres.map(genre => (
-                <NavLink className={css.link} to={`#`} key={genre.id}>{genre.name}</NavLink>
+                <NavLink className={css.link} to={''} key={genre.id}>{genre.name}</NavLink>
             ))}
         </div>
     );

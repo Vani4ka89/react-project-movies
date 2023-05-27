@@ -8,21 +8,21 @@ interface IState {
     genre:IGenre;
     genres: IGenre[];
     error: IError;
-    genreMovies:IMovie[];
+    MoviesOfGenre:IMovie[];
 }
 
 const initialState: IState = {
     genre:null,
     genres: [],
     error: null,
-    genreMovies:null
+    MoviesOfGenre:null
 }
 
 const getGenres = createAsyncThunk<IGenreList, void>(
     'genreSlice/getGenres',
     async (_, {rejectWithValue}) => {
         try {
-            const {data} = await genreService.getGenres();
+            const {data} = await genreService.getGenresList();
             return data
         } catch (e) {
             const err = e as AxiosError
@@ -57,7 +57,7 @@ const slice = createSlice({
 
             .addCase(getById.fulfilled, (state, action) => {
                 const {results} = action.payload
-                state.genreMovies = results
+                state.MoviesOfGenre = results
             })
 
             .addMatcher(isFulfilled(), state => {

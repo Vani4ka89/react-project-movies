@@ -4,8 +4,8 @@ import {axiosService} from "./axios.service";
 import {urls} from "../constants";
 
 class GenreService {
-    getGenres(): IRes<IGenreList> {
-        return axiosService.get(urls.movies.genreList)
+    getGenresList(): IRes<IGenreList> {
+        return axiosService.get(urls.movies.genresList)
     }
 
     getById(id: number): IRes<IMovieList> {
