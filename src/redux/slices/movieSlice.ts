@@ -36,7 +36,7 @@ const getMovie = createAsyncThunk<IMovie, { id: number }>(
     }
 )
 
-const getMovies = createAsyncThunk<IMovieList, { page: number }>(
+const getMovies = createAsyncThunk<IMovieList<IMovie[]>, { page: number }>(
     'movieSlice/getMovies',
     async ({page}, {rejectWithValue}) => {
         try {
@@ -49,7 +49,7 @@ const getMovies = createAsyncThunk<IMovieList, { page: number }>(
     }
 )
 
-const getMoviesOfGenre = createAsyncThunk<IMovieList, { id: number }>(
+const getMoviesOfGenre = createAsyncThunk<IMovieList<IMovie[]>, { id: number }>(
     'movieSlice/getMoviesOfGenre',
     async ({id}, {rejectWithValue}) => {
         try {

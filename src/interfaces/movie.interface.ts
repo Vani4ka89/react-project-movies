@@ -1,9 +1,9 @@
 import {IGenre} from "./genre.interface";
 
-export interface IMovieList {
+export interface IMovieList<T> {
     id: number;
     page: number;
-    results: IMovie[];
+    results: T;
 }
 
 export interface IMovie {

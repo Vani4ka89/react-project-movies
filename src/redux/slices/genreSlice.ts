@@ -31,7 +31,7 @@ const getGenres = createAsyncThunk<IGenreList, void>(
     }
 )
 
-const getById = createAsyncThunk<IMovieList, {id:number}>(
+const getById = createAsyncThunk<IMovieList<IMovie[]>, {id:number}>(
     'genreSlice/getById',
     async ({id}, {rejectWithValue})=>{
         try {
