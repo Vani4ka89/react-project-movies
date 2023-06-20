@@ -13,7 +13,7 @@ class MovieService {
         return axiosService.get(urls.movies.movieById(id))
     }
 
-    getMoviesOfGenre(id:number):IRes<IMovieList<IMovie[]>>{
+    getMoviesOfGenre(id: number): IRes<IMovieList<IMovie[]>> {
         return axiosService.get(urls.movies.moviesOfGenre(id))
     }
 
