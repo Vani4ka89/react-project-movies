@@ -1,10 +1,10 @@
 import {IRes} from "../types";
-import {IGenreList, IMovie, IMovieList} from "../interfaces";
+import {IGenre, IGenreList, IMovie, IMovieList} from "../interfaces";
 import {axiosService} from "./axios.service";
 import {urls} from "../constants";
 
 class GenreService {
-    getGenresList(): IRes<IGenreList> {
+    getAll(): IRes<IGenreList<IGenre[]>> {
         return axiosService.get(urls.movies.genresList)
     }
 

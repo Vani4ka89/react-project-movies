@@ -7,16 +7,16 @@ import css from './Genres.module.css';
 
 const Genres:FC = () => {
 
-    const {genres} = useAppSelector(state => state.genresReducer);
+    const {genresList} = useAppSelector(state => state.genresReducer);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(genresActions.getGenres())
+        dispatch(genresActions.getAll())
     }, [dispatch])
 
     return (
         <div className={css.wrap}>
-            {genres.map(genre => <Genre key={genre.id} genre={genre}/>)}
+            {genresList.map(genre => <Genre key={genre.id} genre={genre}/>)}
         </div>
     );
 };

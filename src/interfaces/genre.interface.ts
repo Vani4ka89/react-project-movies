@@ -1,5 +1,5 @@
-export interface IGenreList {
-    genres:IGenre[];
+export interface IGenreList<T> {
+    genres:T;
 }
 
 export interface IGenre {

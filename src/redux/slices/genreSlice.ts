@@ -5,25 +5,23 @@ import {IError, IGenre, IGenreList, IMovie, IMovieList} from "../../interfaces";
 import {genreService} from "../../services";
 
 interface IState {
-    genre:IGenre;
-    genres: IGenre[];
+    genresList: IGenre[];
     error: IError;
-    MoviesOfGenre:IMovie[];
+    MoviesOfGenre: IMovie[];
 }
 
 const initialState: IState = {
-    genre:null,
-    genres: [],
+    genresList: [],
     error: null,
-    MoviesOfGenre:null
+    MoviesOfGenre: null
 }
 
-const getGenres = createAsyncThunk<IGenreList, void>(
-    'genreSlice/getGenres',
+const getAll = createAsyncThunk<IGenreList<IGenre[]>, void>(
+    'genreSlice/getAll',
     async (_, {rejectWithValue}) => {
         try {
-            const {data} = await genreService.getGenresList();
-            return data
+            const {data: genres} = await genreService.getAll();
+            return genres
         } catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response.data)
@@ -31,9 +29,9 @@ const getGenres = createAsyncThunk<IGenreList, void>(
     }
 )
 
-const getById = createAsyncThunk<IMovieList<IMovie[]>, {id:number}>(
+const getById = createAsyncThunk<IMovieList<IMovie[]>, { id: number }>(
     'genreSlice/getById',
-    async ({id}, {rejectWithValue})=>{
+    async ({id}, {rejectWithValue}) => {
         try {
             const {data} = await genreService.getById(id);
             return data
@@ -50,9 +48,9 @@ const slice = createSlice({
     reducers: {},
     extraReducers: builder =>
         builder
-            .addCase(getGenres.fulfilled, (state, action) => {
+            .addCase(getAll.fulfilled, (state, action) => {
                 const {genres} = action.payload
-                state.genres = genres
+                state.genresList = genres
             })
 
             .addCase(getById.fulfilled, (state, action) => {
@@ -73,7 +71,7 @@ const {reducer: genresReducer, actions} = slice;
 
 const genresActions = {
     ...actions,
-    getGenres,
+    getAll,
     getById
 }
 

@@ -5,15 +5,15 @@ import {accessToken, urls} from "../constants";
 
 class MovieService {
 
-    getAllMovies(page = 1): IRes<IMovieList<IMovie[]>> {
+    getAll(page = 1): IRes<IMovieList<IMovie[]>> {
         return axiosService.get(urls.movies.discover, {params: {page}})
     }
 
-    getMovieById(id: number): IRes<IMovie> {
+    getById(id: number): IRes<IMovie> {
         return axiosService.get(urls.movies.movieById(id))
     }
 
-    getMoviesOfGenre(id: number): IRes<IMovieList<IMovie[]>> {
+    getAllOfGenre(id: number): IRes<IMovieList<IMovie[]>> {
         return axiosService.get(urls.movies.moviesOfGenre(id))
     }
 

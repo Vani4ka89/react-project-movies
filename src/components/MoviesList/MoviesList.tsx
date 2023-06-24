@@ -14,7 +14,7 @@ const MoviesList:FC = () => {
 
     useEffect(() => {
         const currentPage = +query.get('page') ? +query.get('page') : 1;
-        dispatch(moviesActions.getMovies({page: currentPage}))
+        dispatch(moviesActions.getAll({page: currentPage}))
     }, [dispatch, query])
 
     return (

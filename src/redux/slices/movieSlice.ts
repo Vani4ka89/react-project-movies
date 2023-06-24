@@ -7,7 +7,7 @@ import {movieService} from "../../services";
 interface IState {
     movie: IMovie;
     movies: IMovie[];
-    genreOfMovie: IGenre[];
+    genresOfMovie: IGenre[];
     page: number;
     error: IError;
     moviesOfGenre: IMovie[];
@@ -16,31 +16,17 @@ interface IState {
 const initialState: IState = {
     movie: null,
     movies: [],
-    genreOfMovie: null,
+    genresOfMovie: null,
     page: null,
     error: null,
     moviesOfGenre: null
 }
 
-
-const getMovie = createAsyncThunk<IMovie, { id: number }>(
-    'movieSlice/getMovie',
-    async ({id}, {rejectWithValue}) => {
-        try {
-            const {data} = await movieService.getMovieById(id);
-            return data
-        } catch (e) {
-            const err = e as AxiosError
-            return rejectWithValue(err.response.data)
-        }
-    }
-)
-
-const getMovies = createAsyncThunk<IMovieList<IMovie[]>, { page: number }>(
-    'movieSlice/getMovies',
+const getAll = createAsyncThunk<IMovieList<IMovie[]>, { page: number }>(
+    'movieSlice/getAll',
     async ({page}, {rejectWithValue}) => {
         try {
-            const {data} = await movieService.getAllMovies(page);
+            const {data} = await movieService.getAll(page);
             return data
         } catch (e) {
             const err = e as AxiosError
@@ -49,11 +35,24 @@ const getMovies = createAsyncThunk<IMovieList<IMovie[]>, { page: number }>(
     }
 )
 
-const getMoviesOfGenre = createAsyncThunk<IMovieList<IMovie[]>, { id: number }>(
-    'movieSlice/getMoviesOfGenre',
+const getById = createAsyncThunk<IMovie, { id: number }>(
+    'movieSlice/getById',
     async ({id}, {rejectWithValue}) => {
         try {
-            const {data} = await movieService.getMoviesOfGenre(id);
+            const {data:movie} = await movieService.getById(id);
+            return movie
+        } catch (e) {
+            const err = e as AxiosError
+            return rejectWithValue(err.response.data)
+        }
+    }
+)
+
+const getAllOfGenre = createAsyncThunk<IMovieList<IMovie[]>, { id: number }>(
+    'movieSlice/getAllOfGenre',
+    async ({id}, {rejectWithValue}) => {
+        try {
+            const {data} = await movieService.getAllOfGenre(id);
             return data
         } catch (e) {
             const err = e as AxiosError
@@ -69,19 +68,19 @@ const slice = createSlice({
     reducers: {},
     extraReducers: builder =>
         builder
-            .addCase(getMovie.fulfilled, (state, action) => {
-                const {genres} = action.payload
-                state.genreOfMovie = genres
-                state.movie = action.payload
-            })
-
-            .addCase(getMovies.fulfilled, (state, action) => {
+            .addCase(getAll.fulfilled, (state, action) => {
                 const {page, results} = action.payload
                 state.movies = results
                 state.page = page
             })
 
-            .addCase(getMoviesOfGenre.fulfilled, (state, action) => {
+            .addCase(getById.fulfilled, (state, action) => {
+                state.movie = action.payload
+                const {genres} = action.payload
+                state.genresOfMovie = genres
+            })
+
+            .addCase(getAllOfGenre.fulfilled, (state, action) => {
                 const {results} = action.payload
                 state.moviesOfGenre = results
             })
@@ -100,9 +99,9 @@ const {reducer: moviesReducer, actions} = slice;
 
 const moviesActions = {
     ...actions,
-    getMovie,
-    getMovies,
-    getMoviesOfGenre
+    getAll,
+    getById,
+    getAllOfGenre
 }
 
 export {

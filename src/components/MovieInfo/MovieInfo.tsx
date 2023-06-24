@@ -14,7 +14,7 @@ const MovieInfo = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(moviesActions.getMovie({id: +id}))
+        dispatch(moviesActions.getById({id: +id}))
     }, [dispatch, id])
 
     if (!movie) {

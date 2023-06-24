@@ -11,7 +11,7 @@ const GenreBadge = () => {
     const {movie} = useAppSelector(state => state.moviesReducer);
 
     useEffect(() => {
-        dispatch(moviesActions.getMovie({id: +id}))
+        dispatch(moviesActions.getById({id: +id}))
     }, [dispatch, id])
 
     if (!movie) {
