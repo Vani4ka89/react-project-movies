@@ -2,11 +2,11 @@ import React, {FC, useEffect} from 'react';
 
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {moviesActions} from "../../redux";
-import {SearchedMovies} from "../searchedMovies/SearchedMovies";
+// import {SearchedMovies} from "../searchedMovies/SearchedMovies";
 
 const Search: FC = () => {
     const dispatch = useAppDispatch();
-    const {searchedMovies, searchTerm} = useAppSelector(state => state.moviesReducer);
+    const {searchTerm} = useAppSelector(state => state.moviesReducer);
 
     useEffect(() => {
         dispatch(moviesActions.search({searchTerm}))
@@ -14,14 +14,24 @@ const Search: FC = () => {
 
     return (
         <div>
-            {
-                searchedMovies.map(movie => <SearchedMovies key={movie.id} movie={movie}/>)
-            }
-            <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => dispatch(moviesActions.setSearchTerm(e.target.value))}
-            />
+            {/*{*/}
+            {/*    searchedMovies.map(movie => <SearchedMovies key={movie.id} movie={movie}/>)*/}
+            {/*}*/}
+            <div>
+                <input
+                    style={{outline: "none", borderRadius: "10px"}}
+                    type="text"
+                    placeholder={"Search"}
+                    value={searchTerm}
+                    onChange={(e) => dispatch(moviesActions.setSearchTerm(e.target.value))}
+                />
+                <button
+                    style={{
+                        marginLeft: "5px", borderRadius: "12px", width: "50px"
+                    }}>
+                    OK
+                </button>
+            </div>
         </div>
     );
 };
