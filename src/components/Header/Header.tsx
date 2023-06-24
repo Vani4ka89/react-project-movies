@@ -5,6 +5,42 @@ import css from './Header.module.css';
 
 
 const Header = () => {
+
+ /*   const [searchTerm, setSearchTerm] = useState('');
+    const [movies, setMovies] = useState([]);
+
+    const handleSearch = async () => {
+        try {
+            const response = await fetch(`https://api.example.com/movies?search=${searchTerm}`);
+            const data = await response.json();
+            setMovies(data.results);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    return (
+        <div>
+            <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button onClick={handleSearch}>Search</button>
+
+            {movies.length > 0 ? (
+                <ul>
+                    {movies.map((movie) => (
+                        <li key={movie.id}>{movie.title}</li>
+                    ))}
+                </ul>
+            ) : (
+                <p>No movies found.</p>
+            )}
+        </div>
+    );
+}*/
+
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary"
              style={{position: 'static', top: '0', zIndex: '9', width: '100%', backgroundColor: 'darkslategray'}}>

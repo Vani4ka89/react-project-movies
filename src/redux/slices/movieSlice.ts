@@ -11,6 +11,8 @@ interface IState {
     page: number;
     error: IError;
     moviesOfGenre: IMovie[];
+    searchedMovies: IMovie[],
+    searchTerm: string | number,
 }
 
 const initialState: IState = {
@@ -19,7 +21,9 @@ const initialState: IState = {
     genresOfMovie: null,
     page: null,
     error: null,
-    moviesOfGenre: null
+    moviesOfGenre: null,
+    searchedMovies: null,
+    searchTerm: null,
 }
 
 const getAll = createAsyncThunk<IMovieList<IMovie[]>, { page: number }>(
@@ -39,7 +43,7 @@ const getById = createAsyncThunk<IMovie, { id: number }>(
     'movieSlice/getById',
     async ({id}, {rejectWithValue}) => {
         try {
-            const {data:movie} = await movieService.getById(id);
+            const {data: movie} = await movieService.getById(id);
             return movie
         } catch (e) {
             const err = e as AxiosError
@@ -61,11 +65,28 @@ const getAllOfGenre = createAsyncThunk<IMovieList<IMovie[]>, { id: number }>(
     }
 )
 
+const search = createAsyncThunk<IMovieList<IMovie[]>, { searchTerm: string | number }>(
+    'movieSlice/search',
+    async ({searchTerm}, {rejectWithValue}) => {
+        try {
+            const {data} = await movieService.search(searchTerm);
+            return data
+        } catch (e) {
+            const err = e as AxiosError;
+            return rejectWithValue(err.response.data)
+        }
+    }
+)
+
 
 const slice = createSlice({
     name: 'movieSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        setSearchTerm: (state, action) => {
+            state.searchTerm = action.payload
+        }
+    },
     extraReducers: builder =>
         builder
             .addCase(getAll.fulfilled, (state, action) => {
@@ -85,6 +106,12 @@ const slice = createSlice({
                 state.moviesOfGenre = results
             })
 
+            .addCase(search.fulfilled, (state, action) => {
+                const {results} = action.payload
+                console.log(results);
+                state.searchedMovies = results
+            })
+
             .addMatcher(isFulfilled(), state => {
                 state.error = null
             })
@@ -101,7 +128,8 @@ const moviesActions = {
     ...actions,
     getAll,
     getById,
-    getAllOfGenre
+    getAllOfGenre,
+    search
 }
 
 export {
