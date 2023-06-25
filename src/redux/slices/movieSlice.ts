@@ -108,7 +108,6 @@ const slice = createSlice({
 
             .addCase(search.fulfilled, (state, action) => {
                 const {results} = action.payload
-                console.log(results);
                 state.searchedMovies = results
             })
 

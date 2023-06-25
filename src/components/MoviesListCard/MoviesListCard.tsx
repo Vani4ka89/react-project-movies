@@ -19,7 +19,7 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
 
     return (
         <div key={id}>
-            <div className={css.card} onClick={() => navigate(`${id}`, {state: {...movie}})}>
+            {backdrop_path && <div className={css.card} onClick={() => navigate(`${id}`, {state: {...movie}})}>
                 <img src={imgPath} alt={title}/>
                 <div className={css.cardContent}>
                     <div className={css.additionalData}>
@@ -33,7 +33,7 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
                         <div className="d-flex justify-content-between align-items-center"></div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </div>
     );
 };

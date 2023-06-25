@@ -6,10 +6,10 @@ import {moviesActions} from "../../redux";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import css from './MoviesList.module.css'
 
-const MoviesList:FC = () => {
+const MoviesList: FC = () => {
 
     const dispatch = useAppDispatch();
-    const {movies} = useAppSelector(state => state.moviesReducer);
+    const {movies, searchedMovies} = useAppSelector(state => state.moviesReducer);
     const [query] = useSearchParams();
 
     useEffect(() => {
@@ -19,7 +19,11 @@ const MoviesList:FC = () => {
 
     return (
         <div className={css.MoviesList}>
-            {movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
+            {searchedMovies &&
+            searchedMovies.length > 0 ? searchedMovies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
+                :
+                movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
+            }
         </div>
     );
 };

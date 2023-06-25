@@ -2,44 +2,17 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 
 import css from './Header.module.css';
-
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {moviesActions} from "../../redux";
 
 const Header = () => {
 
- /*   const [searchTerm, setSearchTerm] = useState('');
-    const [movies, setMovies] = useState([]);
-
-    const handleSearch = async () => {
-        try {
-            const response = await fetch(`https://api.example.com/movies?search=${searchTerm}`);
-            const data = await response.json();
-            setMovies(data.results);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    return (
-        <div>
-            <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <button onClick={handleSearch}>Search</button>
-
-            {movies.length > 0 ? (
-                <ul>
-                    {movies.map((movie) => (
-                        <li key={movie.id}>{movie.title}</li>
-                    ))}
-                </ul>
-            ) : (
-                <p>No movies found.</p>
-            )}
-        </div>
-    );
-}*/
+    const dispatch = useAppDispatch();
+    const {searchTerm} = useAppSelector(state => state.moviesReducer);
+    const movieSearch = async (e: any) => {
+        e.preventDefault()
+        await dispatch(moviesActions.search({searchTerm}))
+    }
 
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary"
@@ -67,8 +40,11 @@ const Header = () => {
                             alt="logo"/>
                         <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search"
-                                   aria-label="Search"/>
-                            <button className="btn btn-outline-success" type="submit">Search</button>
+                                   style={{color: "darkgreen", fontWeight: "bolder"}}
+                                   aria-label="Search" value={searchTerm}
+                                   onChange={(e) => dispatch(moviesActions.setSearchTerm(e.target.value))}/>
+                            <button className="btn btn-outline-success" type="submit" onClick={movieSearch}>Search
+                            </button>
                         </form>
                     </div>
                 </div>
