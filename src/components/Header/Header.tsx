@@ -9,9 +9,13 @@ const Header = () => {
 
     const dispatch = useAppDispatch();
     const {searchTerm} = useAppSelector(state => state.moviesReducer);
+
     const movieSearch = async (e: any) => {
-        e.preventDefault()
-        await dispatch(moviesActions.search({searchTerm}))
+        e.preventDefault();
+        await Promise.all([
+            dispatch(moviesActions.setSearchTerm(e.target.value)),
+            dispatch(moviesActions.search({searchTerm}))
+        ])
     }
 
     return (
@@ -42,9 +46,9 @@ const Header = () => {
                             <input className="form-control me-2" type="search" placeholder="Search"
                                    style={{color: "darkgreen", fontWeight: "bolder"}}
                                    aria-label="Search" value={searchTerm}
-                                   onChange={(e) => dispatch(moviesActions.setSearchTerm(e.target.value))}/>
-                            <button className="btn btn-outline-success" type="submit" onClick={movieSearch}>Search
-                            </button>
+                                   onChange={movieSearch}/>
+                            {/*<button className="btn btn-outline-success" type="submit" onClick={movieSearch}>Search*/}
+                            {/*</button>*/}
                         </form>
                     </div>
                 </div>
