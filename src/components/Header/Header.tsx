@@ -1,9 +1,9 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 
-import css from './Header.module.css';
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {moviesActions} from "../../redux";
+import '../../styles/components/Header.css';
 
 const Header = () => {
 
@@ -39,14 +39,14 @@ const Header = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <NavLink className="nav-link active" aria-current="page" to={'movies'}
+                            <NavLink className="nav-link active shine" aria-current="page" to={'movies'}
                                      style={{color: 'white'}}>Movies</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to={'genres'} style={{color: 'white'}}>Genres</NavLink>
+                            <NavLink className="nav-link shine" to={'genres'} style={{color: 'white'}}>Genres</NavLink>
                         </li>
                     </ul>
-                    <div className={css.logo}>
+                    <div className={'logo'}>
                         <img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdxOqXuRWoYenOK3CKWtqYmth9K_EaQ5FmoA&usqp=CAU"
                             alt="logo"/>

@@ -1,0 +1,56 @@
+.light-theme .general-button{
+    background-color: rgb(202, 193, 193);
+    color: #333333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: solid black 1px;
+}
+
+.light-theme .general-button:hover {
+    background-color: rgb(123, 116, 116);
+    animation: shine 1s linear infinite;
+}
+
+.dark-theme .general-button {
+    background-color: rgba(198, 20, 20, 0.62);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .general-button:hover {
+    background-color: rgba(146, 17, 17, 0.74);
+    animation: shine 1s linear infinite;
+}
+
+/********************************MEDIA*************************/
+
+@media (max-width: 480px) {
+    .movie-card {
+        width: calc(80% - 10px);
+    }
+}
+@media (min-width: 480px) and (max-width: 768px) {
+    .movie-card {
+        width: 100%;
+    }
+    .movie-card {
+        width: calc(30% - 5px);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .movie-card {
+        width: calc(22% - 5px);
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .movie-card {
+        width: calc(20% - 5px);
+    }
+}
+
+@media (min-width: 1441px )  {
+    .movie-card {
+        width: calc(15% - 5px);
+    }
+}

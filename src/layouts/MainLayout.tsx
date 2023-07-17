@@ -2,12 +2,11 @@ import React from 'react';
 import {Outlet} from "react-router-dom";
 
 import {Header} from "../components";
-import css from './MainLayout.module.css';
-
+import '../styles/components/MainLayout.css';
 
 const MainLayout = () => {
     return (
-        <div className={css.wrap}>
+        <div className={'main-layout'}>
             <Header/>
             <Outlet/>
         </div>

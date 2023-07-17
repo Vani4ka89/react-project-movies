@@ -6,6 +6,5 @@ export * from './Genre/Genre';
 export * from './Genres/Genres';
 export * from './Genres/Genres.module.css';
 export * from './MovieInfo/MovieInfo';
-export * from './MovieInfo/MoviesInfo.module.css';
 export * from './GenreMovies/GenreMovies';
 export * from './GenreMovies/GenreMovies.module.css';

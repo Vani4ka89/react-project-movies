@@ -4,9 +4,9 @@ import Rating from "@mui/material/Rating";
 
 import {moviesActions} from "../../redux";
 import {useAppDispatch, useAppLocation} from "../../hooks";
-import css from './MoviesInfo.module.css';
 import GenreBadge from "../GenreBadge/GenreBadge";
 import {IMovie} from "../../interfaces";
+import '../../styles/components/MovieInfo.css';
 
 const MovieInfo = () => {
     const {id} = useParams();
@@ -23,11 +23,11 @@ const MovieInfo = () => {
     const {poster_path, title, original_title, overview, vote_average} = movie;
 
     return (
-        <div className={css.infoBox}>
+        <div className={'infoBox'}>
             <div>
                 <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title}/>
             </div>
-            <div className={css.content}>
+            <div className={'content'}>
                 <h1>{original_title}</h1>
                 <div>
                     <GenreBadge/>

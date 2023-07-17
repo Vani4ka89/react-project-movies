@@ -4,7 +4,7 @@ import {useSearchParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {moviesActions} from "../../redux";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
-import css from './MoviesList.module.css'
+import '../../styles/components/MoviesList.css'
 import {MoviesPagination} from "../MoviesPagination/MoviesPagination";
 
 const MoviesList: FC = () => {
@@ -19,13 +19,12 @@ const MoviesList: FC = () => {
     }, [dispatch, query])
 
     return (
-        <div className={css.MoviesList}>
+        <div className={'moviesList'}>
             {searchedMovies &&
             searchedMovies.length > 0 ? searchedMovies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
                 :
                 movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
             }
-            <MoviesPagination/>
         </div>
     );
 };

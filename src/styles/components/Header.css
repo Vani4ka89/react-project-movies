@@ -1,3 +1,8 @@
+/*.shine:hover {*/
+/*    color: yellow;*/
+/*    animation: shine 500ms linear infinite;*/
+/*}*/
+
 .logo {
     display: flex;
 }

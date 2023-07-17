@@ -6,17 +6,17 @@ import css from './GenreMovies.module.css';
 import {useNavigate} from "react-router-dom";
 
 interface IProps {
-    movies:IMovie;
+    movies: IMovie;
 }
 
-const GenreMovies:FC<IProps> = ({movies}) => {
+const GenreMovies: FC<IProps> = ({movies}) => {
     const navigate = useNavigate();
 
     const {id, backdrop_path, title, vote_average, release_date, overview} = movies;
     const imgPath = backdrop_path ? `https://image.tmdb.org/t/p/w500/${backdrop_path}` : '#';
 
     return (
-        <div key={id} onClick={()=>navigate(`#`, {state:{...movies}})}>
+        <div key={id} onClick={() => navigate(`#`, {state: {...movies}})}>
             <div className={css.cards}>
                 <img src={imgPath} alt={title}/>
                 <div className={css.cardContent}>

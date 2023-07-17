@@ -1,9 +1,9 @@
-.MoviesList {
+.moviesList {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-    background-color: black;
+    background-color: #02022f;
     padding: 30px;
 }

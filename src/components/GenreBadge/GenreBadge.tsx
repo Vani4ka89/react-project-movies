@@ -3,7 +3,7 @@ import {NavLink, useParams} from "react-router-dom";
 
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {moviesActions} from "../../redux";
-import css from "./GenreBadge.module.css";
+import '../../styles/components/GenreBadge.css';
 
 const GenreBadge = () => {
     const {id} = useParams();
@@ -22,7 +22,7 @@ const GenreBadge = () => {
     return (
         <div>
             {genres.map(genre => (
-                <NavLink className={css.link} to={''} key={genre.id}>{genre.name}</NavLink>
+                <NavLink className={'link'} to={''} key={genre.id}>{genre.name}</NavLink>
             ))}
         </div>
     );
