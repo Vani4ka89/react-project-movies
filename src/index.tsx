@@ -9,7 +9,7 @@ import {setupStore} from "./redux";
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
-let store = setupStore();
+const store = setupStore();
 root.render(
     <Provider store={store}>
         <BrowserRouter>
