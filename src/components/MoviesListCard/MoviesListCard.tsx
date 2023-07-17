@@ -11,7 +11,7 @@ interface IProps {
 
 const MoviesListCard: FC<IProps> = ({movie}) => {
     const {
-        backdrop_path, id, overview, title, release_date, vote_average
+        backdrop_path, id, title, release_date, vote_average
     } = movie
     const navigate = useNavigate();
 
@@ -22,16 +22,16 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
             {backdrop_path && <div className={css.card} onClick={() => navigate(`${id}`, {state: {...movie}})}>
                 <img src={imgPath} alt={title}/>
                 <div className={css.cardContent}>
+                    <h5>{title}</h5>
                     <div className={css.additionalData}>
                         <Rating name="read-only" defaultValue={vote_average} readOnly max={10} precision={0.5}
                                 size='small'/>
                         <div className="text-body-secondary">{release_date?.substring(0, 4)}</div>
                     </div>
-                    <h5>{title}</h5>
-                    <div className="card-body">
-                        <p className="card-text">{overview}</p>
-                        <div className="d-flex justify-content-between align-items-center"></div>
-                    </div>
+                    {/*<div className="card-body">*/}
+                    {/*    <p className="card-text">{overview}</p>*/}
+                    {/*    <div className="d-flex justify-content-between align-items-center"></div>*/}
+                    {/*</div>*/}
                 </div>
             </div>}
         </div>

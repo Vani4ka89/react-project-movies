@@ -5,6 +5,7 @@ import {useAppDispatch, useAppSelector} from "../../hooks";
 import {moviesActions} from "../../redux";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import css from './MoviesList.module.css'
+import {MoviesPagination} from "../MoviesPagination/MoviesPagination";
 
 const MoviesList: FC = () => {
 
@@ -24,6 +25,7 @@ const MoviesList: FC = () => {
                 :
                 movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
             }
+            <MoviesPagination/>
         </div>
     );
 };

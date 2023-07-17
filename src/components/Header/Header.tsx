@@ -20,7 +20,15 @@ const Header = () => {
 
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary"
-             style={{position: 'static', top: '0', zIndex: '9', width: '100%', backgroundColor: 'darkslategray'}}>
+             style={{
+                 position: 'sticky',
+                 top: '0',
+                 zIndex: '9',
+                 width: '100%',
+                 backgroundColor: 'darkslategray',
+                 background: 'black',
+                 opacity:'0.8'
+             }}>
             <div className="container-fluid">
                 <NavLink className="navbar-brand" to={'home'} style={{color: 'white'}}></NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
