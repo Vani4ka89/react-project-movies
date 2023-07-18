@@ -3,6 +3,8 @@ import {IGenre} from "./genre.interface";
 export interface IMovieList<T> {
     id: number;
     page: number;
+    total_pages: number;
+    total_results: number;
     results: T;
 }
 
@@ -50,6 +52,7 @@ export interface IMovie {
     vote_average: number;
     vote_count: number;
 }
+
 
 /*export interface IMovie {
     adult: boolean;

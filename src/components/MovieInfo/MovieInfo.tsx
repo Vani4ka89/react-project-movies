@@ -9,12 +9,14 @@ import {IMovie} from "../../interfaces";
 import '../../styles/components/MovieInfo.css';
 
 const MovieInfo = () => {
-    const {id} = useParams();
-    const {state:movie} = useAppLocation<IMovie>();
+    const {id} = useParams<{ id: string }>();
+    const {state: movie} = useAppLocation<IMovie>();
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(moviesActions.getById({id: +id}))
+        if (id) {
+            dispatch(moviesActions.getById({id}))
+        }
     }, [dispatch, id])
 
     if (!movie) {

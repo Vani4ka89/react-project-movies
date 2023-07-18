@@ -5,10 +5,13 @@ const baseURL = 'https://api.themoviedb.org/3';
 const urls = {
     movies: {
         discover: `/discover/movie`,
-        movieById: (id: number): string => `/movie/${id}`,
+        movieById: (id: string): string => `/movie/${id}`,
+        lists: (movie_id: number): string => `/movie/${movie_id}/lists`,
+        popular: `/movie/popular`,
         genresList: `/genre/movie/list`,
         moviesOfGenre: (id: number): string => `/genre/${id}/movies`,
         searchMovie: (searchTerm: string | number): string => `/search/movie?query=${searchTerm}`,
+        video: (id: number): string => `/movie/${id}/videos`
     }
 };
 

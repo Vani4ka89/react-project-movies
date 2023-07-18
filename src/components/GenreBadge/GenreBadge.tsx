@@ -6,12 +6,12 @@ import {moviesActions} from "../../redux";
 import '../../styles/components/GenreBadge.css';
 
 const GenreBadge = () => {
-    const {id} = useParams();
+    const {id} = useParams<{id:string}>();
     const dispatch = useAppDispatch();
     const {movie} = useAppSelector(state => state.moviesReducer);
 
     useEffect(() => {
-        dispatch(moviesActions.getById({id: +id}))
+        dispatch(moviesActions.getById({id}))
     }, [dispatch, id])
 
     if (!movie) {
