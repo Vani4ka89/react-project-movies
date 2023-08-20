@@ -1,11 +1,11 @@
 import {IRes} from "../types";
-import {IMovie, IMovieList} from "../interfaces";
+import {IMovie, IPagination} from "../interfaces";
 import {axiosService} from "./axios.service";
 import {accessToken, urls} from "../constants";
 
 class MovieService {
 
-    getAll(page = 1): IRes<IMovieList<IMovie[]>> {
+    getAll(page = 1): IRes<IPagination<IMovie[]>> {
         return axiosService.get(urls.movies.discover, {params: {page}})
     }
 
@@ -13,11 +13,11 @@ class MovieService {
         return axiosService.get(urls.movies.movieById(id))
     }
 
-    getAllOfGenre(id: number): IRes<IMovieList<IMovie[]>> {
+    getAllOfGenre(id: number): IRes<IPagination<IMovie[]>> {
         return axiosService.get(urls.movies.moviesOfGenre(id))
     }
 
-    search(searchTerm: string | number): IRes<IMovieList<IMovie[]>> {
+    search(searchTerm: string | number): IRes<IPagination<IMovie[]>> {
         return axiosService.get(urls.movies.searchMovie(searchTerm))
     }
 

@@ -1,7 +1,7 @@
 import {AxiosError} from "axios";
 import {createAsyncThunk, createSlice, isFulfilled, isRejectedWithValue} from "@reduxjs/toolkit";
 
-import {IError, IGenre, IMovie, IMovieList} from "../../interfaces";
+import {IError, IGenre, IMovie, IPagination} from "../../interfaces";
 import {movieService} from "../../services";
 
 interface IState {
@@ -26,7 +26,7 @@ const initialState: IState = {
     searchTerm: null,
 }
 
-const getAll = createAsyncThunk<IMovieList<IMovie[]>, { page: number }>(
+const getAll = createAsyncThunk<IPagination<IMovie[]>, { page: number }>(
     'movieSlice/getAll',
     async ({page}, {rejectWithValue}) => {
         try {
@@ -52,7 +52,7 @@ const getById = createAsyncThunk<IMovie, { id: string }>(
     }
 )
 
-const getAllOfGenre = createAsyncThunk<IMovieList<IMovie[]>, { id: number }>(
+const getAllOfGenre = createAsyncThunk<IPagination<IMovie[]>, { id: number }>(
     'movieSlice/getAllOfGenre',
     async ({id}, {rejectWithValue}) => {
         try {
@@ -65,7 +65,7 @@ const getAllOfGenre = createAsyncThunk<IMovieList<IMovie[]>, { id: number }>(
     }
 )
 
-const search = createAsyncThunk<IMovieList<IMovie[]>, { searchTerm: string | number }>(
+const search = createAsyncThunk<IPagination<IMovie[]>, { searchTerm: string | number }>(
     'movieSlice/search',
     async ({searchTerm}, {rejectWithValue}) => {
         try {
