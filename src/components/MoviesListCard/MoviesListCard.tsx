@@ -4,6 +4,7 @@ import Rating from "@mui/material/Rating";
 
 import {IMovie} from "../../interfaces";
 import css from './MoviesListCard.module.css';
+import {posterBaseUrl} from "../../constants";
 
 interface IProps {
     movie: IMovie;
@@ -12,14 +13,14 @@ interface IProps {
 const MoviesListCard: FC<IProps> = ({movie}) => {
     const {
         backdrop_path, id, title, release_date, vote_average
-    } = movie
+    } = movie;
     const navigate = useNavigate();
 
-    const imgPath = backdrop_path ? `https://image.tmdb.org/t/p/w500/${backdrop_path}` : '#';
+    const imgPath = backdrop_path ? `${posterBaseUrl}${backdrop_path}` : '';
 
     return (
         <div key={id}>
-            {backdrop_path && <div className={css.card} onClick={() => navigate(`${id}`, {state: {...movie}})}>
+            {backdrop_path && <div className={css.card} onClick={() => navigate(`/movies/${id}`, {state: {...movie}})}>
                 <img src={imgPath} alt={title}/>
                 <div className={css.cardContent}>
                     <h5>{title}</h5>
@@ -28,10 +29,6 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
                                 size='small'/>
                         <div className="text-body-secondary">{release_date?.substring(0, 4)}</div>
                     </div>
-                    {/*<div className="card-body">*/}
-                    {/*    <p className="card-text">{overview}</p>*/}
-                    {/*    <div className="d-flex justify-content-between align-items-center"></div>*/}
-                    {/*</div>*/}
                 </div>
             </div>}
         </div>

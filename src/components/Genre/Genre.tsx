@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 import {IGenre} from "../../interfaces";
 import '../../styles/components/Genre.css';
@@ -10,11 +10,16 @@ interface IProps {
 
 const Genre: FC<IProps> = ({genre}) => {
     const {id, name} = genre
+    const navigate = useNavigate();
+
+    const getGenreMovies = () => {
+        navigate(`/movies/genre/${id}`)
+    }
 
     return (
-        <div className={'box'}>
+        <div className={'box'} onClick={getGenreMovies}>
             <div>
-                <NavLink className={'link'} to={id.toString()}>{name}</NavLink>
+                <button className={'link'}>{name}</button>
             </div>
             <hr/>
         </div>

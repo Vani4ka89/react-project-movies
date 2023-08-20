@@ -13,10 +13,10 @@ const App = () => {
         <Routes>
             <Route path={'/'} element={<MainLayout/>}>
                 <Route index element={<Navigate to={'movies'}/>}/>
-                <Route path={'movies'} element={<MoviesPage/>}/>
-                <Route path={'movies/:id'} element={<MovieInfo/>}/>
-                <Route path={'genres'} element={<GenresListPage/>}/>
-                <Route path={'genres/:id'} element={<GenrePage/>}/>
+                <Route path={'/movies'} element={<MoviesPage/>}/>
+                <Route path={'/movies/:id'} element={<MovieInfo/>}/>
+                <Route path={'/genres'} element={<GenresListPage/>}/>
+                <Route path={'/movies/genre/:id'} element={<GenrePage/>}/>
             </Route>
         </Routes>
     );

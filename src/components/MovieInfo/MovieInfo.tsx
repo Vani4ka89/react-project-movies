@@ -4,7 +4,7 @@ import Rating from "@mui/material/Rating";
 
 import {moviesActions} from "../../redux";
 import {useAppDispatch, useAppLocation} from "../../hooks";
-import GenreBadge from "../GenreBadge/GenreBadge";
+import {GenreBadge} from "../GenreBadge/GenreBadge";
 import {IMovie} from "../../interfaces";
 import '../../styles/components/MovieInfo.css';
 

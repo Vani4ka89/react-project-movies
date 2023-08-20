@@ -1,14 +1,15 @@
 import React, {useEffect} from 'react';
-import {NavLink, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {moviesActions} from "../../redux";
 import '../../styles/components/GenreBadge.css';
 
 const GenreBadge = () => {
-    const {id} = useParams<{id:string}>();
+    const {id} = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
     const {movie} = useAppSelector(state => state.moviesReducer);
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(moviesActions.getById({id}))
@@ -22,10 +23,11 @@ const GenreBadge = () => {
     return (
         <div>
             {genres.map(genre => (
-                <NavLink className={'link'} to={''} key={genre.id}>{genre.name}</NavLink>
+                <button className={'link'} key={genre.id}
+                        onClick={() => navigate(`/movies/genre/${genre.id}`)}>{genre.name}</button>
             ))}
         </div>
     );
 };
 
-export default GenreBadge;
+export {GenreBadge};

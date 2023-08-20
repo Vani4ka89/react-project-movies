@@ -5,7 +5,6 @@ import {useAppDispatch, useAppSelector} from "../../hooks";
 import {moviesActions} from "../../redux";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import '../../styles/components/MoviesList.css'
-import {MoviesPagination} from "../MoviesPagination/MoviesPagination";
 
 const MoviesList: FC = () => {
 

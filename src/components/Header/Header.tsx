@@ -39,11 +39,11 @@ const Header = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <NavLink className="nav-link active shine" aria-current="page" to={'movies'}
-                                     style={{color: 'white'}}>Movies</NavLink>
+                            <NavLink className="nav-link shine" to={''} style={{color: 'white'}}>Home</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link shine" to={'genres'} style={{color: 'white'}}>Genres</NavLink>
+                            <NavLink className="nav-link active shine" aria-current="page" to={'/movies'}
+                    style={{color: 'white'}}>Movies</NavLink>
                         </li>
                     </ul>
                     <div className={'logo'}>
