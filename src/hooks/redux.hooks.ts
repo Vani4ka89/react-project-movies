@@ -8,4 +8,4 @@ const useAppDispatch = () => useDispatch<AppDispatch>();
 export {
     useAppSelector,
     useAppDispatch
-}
+};
