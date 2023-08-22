@@ -8,8 +8,8 @@ class GenreService {
         return axiosService.get(urls.movies.genresList)
     }
 
-    getById(id: number): IRes<IPagination<IMovie[]>> {
-        return axiosService.get(urls.movies.moviesOfGenre(id))
+    getById(id: number, page: number): IRes<IPagination<IMovie[]>> {
+        return axiosService.get(urls.movies.moviesOfGenre(id), {params: {page}})
     }
 }
 
