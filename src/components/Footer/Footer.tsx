@@ -7,7 +7,7 @@ const Footer: FC = () => {
     return (
         <div className={"box"}>
             <div className={"text"}>
-                <img src={img}/>
+                <img src={img} alt={"logo"}/>
                 <div>This product uses the TMDB API but is not endorsed or certified by TMDB.</div>
             </div>
         </div>
