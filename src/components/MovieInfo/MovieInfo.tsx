@@ -7,37 +7,48 @@ import {useAppDispatch, useAppLocation} from "../../hooks";
 import {GenreBadge} from "../GenreBadge/GenreBadge";
 import {IMovie} from "../../interfaces";
 import '../../styles/components/MovieInfo.css';
+import {posterBaseUrl} from "../../constants";
 
 const MovieInfo = () => {
-    const {id} = useParams<{ id: string }>();
+    const {movieId} = useParams<{ movieId: string }>();
     const {state: movie} = useAppLocation<IMovie>();
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        if (id) {
-            dispatch(moviesActions.getById({id}))
+        if (movieId) {
+            dispatch(moviesActions.getById({movieId}))
         }
-    }, [dispatch, id])
+    }, [dispatch, movieId])
 
     if (!movie) {
         return
     }
     const {poster_path, title, original_title, overview, vote_average} = movie;
 
+    // const starConfig = {
+    //     size: 18,
+    //     activeColor: '#c00e0e',
+    //     color: '#ffffff',
+    //     edit: false,
+    // };
+
     return (
-        <div className={'infoBox'}>
+        <div className={'main-container'}>
             <div>
-                <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title}/>
+                <img src={`${posterBaseUrl}${poster_path}`} alt={title}/>
             </div>
             <div className={'content'}>
                 <h1>{original_title}</h1>
-                <div>
                     <GenreBadge/>
-                </div>
                 <p>Rating</p>
                 <div>
-                    <Rating name="read-only" defaultValue={vote_average} readOnly max={10} precision={0.1}
-                            size='large'/>
+                    <Rating
+                        name="read-only"
+                        defaultValue={vote_average}
+                        readOnly max={10}
+                        precision={0.1}
+                        size='large'
+                    />
                 </div>
                 <p>Overview</p>
                 <h5>{overview}</h5>

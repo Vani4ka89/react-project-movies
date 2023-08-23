@@ -29,11 +29,11 @@ const getAll = createAsyncThunk<IGenreList<IGenre[]>, void>(
     }
 )
 
-const getById = createAsyncThunk<IPagination<IMovie[]>, { id: number, page: number }>(
+const getById = createAsyncThunk<IPagination<IMovie[]>, { genreId: number, page: number }>(
     'genreSlice/getById',
-    async ({id, page}, {rejectWithValue}) => {
+    async ({genreId, page}, {rejectWithValue}) => {
         try {
-            const {data} = await genreService.getById(id, page);
+            const {data} = await genreService.getById(genreId, page);
             return data
         } catch (e) {
             const err = e as AxiosError

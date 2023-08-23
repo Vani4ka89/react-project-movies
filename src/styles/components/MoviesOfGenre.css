@@ -2,7 +2,8 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
-    padding: 20px;
+    background-color: #02022f;
+    padding: 30px;
 }

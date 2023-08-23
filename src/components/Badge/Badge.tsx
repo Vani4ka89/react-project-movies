@@ -5,11 +5,11 @@ import {IGenre} from "../../interfaces";
 import '../../styles/components/Genre.css';
 
 interface IProps {
-    genre: IGenre;
+    badge: IGenre;
 }
 
-const Genre: FC<IProps> = ({genre}) => {
-    const {id, name} = genre
+const Badge: FC<IProps> = ({badge}) => {
+    const {id, name} = badge
     const navigate = useNavigate();
 
     const getGenreMovies = () => {
@@ -26,4 +26,4 @@ const Genre: FC<IProps> = ({genre}) => {
     );
 };
 
-export {Genre};
+export {Badge};

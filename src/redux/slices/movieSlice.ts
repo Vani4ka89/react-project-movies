@@ -39,11 +39,11 @@ const getAll = createAsyncThunk<IPagination<IMovie[]>, { page: number }>(
     }
 )
 
-const getById = createAsyncThunk<IMovie, { id: string }>(
+const getById = createAsyncThunk<IMovie, { movieId: string }>(
     'movieSlice/getById',
-    async ({id}, {rejectWithValue}) => {
+    async ({movieId}, {rejectWithValue}) => {
         try {
-            const {data: movie} = await movieService.getById(id);
+            const {data: movie} = await movieService.getById(movieId);
             return movie
         } catch (e) {
             const err = e as AxiosError

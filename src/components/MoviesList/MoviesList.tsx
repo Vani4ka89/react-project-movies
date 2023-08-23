@@ -5,12 +5,10 @@ import {useAppDispatch, useAppSelector} from "../../hooks";
 import {moviesActions} from "../../redux";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import '../../styles/components/MoviesList.css'
-import {GenrePage} from "../../pages/GenrePage/GenrePage";
 
 const MoviesList: FC = () => {
 
     const dispatch = useAppDispatch();
-    const {MoviesOfGenre} = useAppSelector(state => state.genresReducer);
     const {movies, searchedMovies} = useAppSelector(state => state.moviesReducer);
     const [query] = useSearchParams();
 
@@ -20,13 +18,12 @@ const MoviesList: FC = () => {
     }, [dispatch, query])
 
     return (
-        <div className={'moviesList'}>
-            {/*{MoviesOfGenre && MoviesOfGenre.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}*/}
+        <div className={'moviesContainer'}>
             {
                 searchedMovies &&
-            searchedMovies.length > 0 ? searchedMovies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
-                :
-                movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
+                searchedMovies.length > 0 ? searchedMovies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
+                    :
+                    movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
             }
         </div>
     );
