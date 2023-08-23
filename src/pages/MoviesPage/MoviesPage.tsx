@@ -2,6 +2,7 @@ import React from 'react';
 
 import {GenresBadgesList, MoviesList, MoviesPagination} from "../../components";
 import css from './MoviesPage.module.css'
+import {Footer} from "../../components/Footer/Footer";
 
 
 const MoviesPage = () => {
