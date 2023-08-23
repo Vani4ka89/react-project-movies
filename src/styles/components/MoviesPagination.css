@@ -1,4 +1,17 @@
-.prevClass {
-    background: darkgray;
-    color: #02022f;
+.container button{
+    background-color: rgba(0, 139, 139, 0.2);
+    color: #7c5af6;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    border: 1px solid darkcyan;
+    border-radius: 10px;
+}
+
+.container button:not(:first-child){
+    margin-left: 10px;
+}
+
+.container button:hover {
+    background-color: darkcyan;
+    color: #ffcc00;
 }

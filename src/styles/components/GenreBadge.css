@@ -1,12 +1,11 @@
 .btn-box button{
     text-decoration: none;
     font-size: 20px;
-    margin: 0 10px;
+    margin: 30px 10px 0 10px;
     color: #7c5af6;
     background-color: rgba(0, 139, 139, 0.2);
     display: inline-block;
     padding: 0 10px;
-    margin-top: 30px;
     border: 1px solid darkcyan;
     border-radius: 10px;
 }

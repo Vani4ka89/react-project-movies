@@ -27,7 +27,7 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
                     <div className={css.additionalData}>
                         <Rating name="read-only" defaultValue={vote_average} readOnly max={10} precision={0.5}
                                 size='small'/>
-                        <div className="text-body-secondary">{release_date?.substring(0, 4)}</div>
+                        <div className={`text-body-secondary ${css.year}`}>{release_date?.substring(0, 4)}</div>
                     </div>
                 </div>
             </div>}
