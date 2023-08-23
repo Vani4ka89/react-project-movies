@@ -1,27 +1,23 @@
 import React, {FC} from 'react';
 import {useNavigate} from "react-router-dom";
 
-import {IGenre} from "../../interfaces";
-import '../../styles/components/Genre.css';
+import {IGenreBadge} from "../../interfaces";
 
 interface IProps {
-    badge: IGenre;
+    badge: IGenreBadge;
 }
 
 const Badge: FC<IProps> = ({badge}) => {
-    const {id, name} = badge
+    const {id: genreId, name} = badge;
     const navigate = useNavigate();
 
     const getGenreMovies = () => {
-        navigate(`/movies/genre/${id}`)
+        navigate(`/movies/genre/${genreId}`)
     }
 
     return (
-        <div className={'box'} onClick={getGenreMovies}>
-            <div>
-                <button className={'link'}>{name}</button>
-            </div>
-            <hr/>
+        <div className={'btn-box'} onClick={getGenreMovies}>
+                <button>{name}</button>
         </div>
     );
 };

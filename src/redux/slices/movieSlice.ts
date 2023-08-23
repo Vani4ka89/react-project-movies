@@ -1,13 +1,13 @@
 import {AxiosError} from "axios";
 import {createAsyncThunk, createSlice, isFulfilled, isRejectedWithValue} from "@reduxjs/toolkit";
 
-import {IError, IGenre, IMovie, IPagination} from "../../interfaces";
+import {IError, IGenreBadge, IMovie, IPagination} from "../../interfaces";
 import {movieService} from "../../services";
 
 interface IState {
     movie: IMovie;
     movies: IMovie[];
-    genresOfMovie: IGenre[];
+    genresOfMovie: IGenreBadge[];
     page: number;
     error: IError;
     moviesOfGenre: IMovie[];

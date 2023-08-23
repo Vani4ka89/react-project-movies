@@ -12,6 +12,7 @@ const MoviesOfGenre: FC = () => {
     const dispatch = useAppDispatch();
     const [query, _] = useSearchParams();
     const {MoviesOfGenre} = useAppSelector(state => state.genresReducer);
+    const {searchedMovies} = useAppSelector(state => state.moviesReducer);
 
     useEffect(() => {
         const currentPage = +query.get('page') ? +query.get('page') : 1;
@@ -24,7 +25,12 @@ const MoviesOfGenre: FC = () => {
 
     return (
         <div className={'moviesContainer'}>
-            {MoviesOfGenre.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
+            {
+                searchedMovies &&
+                searchedMovies.length > 0 ? searchedMovies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
+                    :
+                MoviesOfGenre.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
+            }
         </div>
     );
 };

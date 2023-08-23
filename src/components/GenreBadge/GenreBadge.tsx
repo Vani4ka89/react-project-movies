@@ -16,16 +16,18 @@ const GenreBadge = () => {
     }, [dispatch, movieId])
 
     if (!movie) {
-        return
+        return <div>Loading...</div>
     }
+
     const {genres} = movie;
 
+    const getGenreMovies = (genreId: number) => {
+        navigate(`/movies/genre/${genreId}`);
+    }
+
     return (
-        <div>
-            {genres.map(genre => (
-                <button className={'link'} key={genre.id}
-                        onClick={() => navigate(`/movies/genre/${genre.id}`)}>{genre.name}</button>
-            ))}
+        <div className={'btn-box'}>
+            {genres.map(genre => <button onClick={() => getGenreMovies(genre.id)}>{genre.name}</button>)}
         </div>
     );
 };

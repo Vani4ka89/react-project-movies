@@ -1,10 +1,10 @@
 import {IRes} from "../types";
-import {IGenre, IGenreList, IMovie, IPagination} from "../interfaces";
+import {IGenreBadge, IGenreBadgePagination, IMovie, IPagination} from "../interfaces";
 import {axiosService} from "./axios.service";
 import {urls} from "../constants";
 
 class GenreService {
-    getAll(): IRes<IGenreList<IGenre[]>> {
+    getAll(): IRes<IGenreBadgePagination<IGenreBadge[]>> {
         return axiosService.get(urls.movies.genresList)
     }
 

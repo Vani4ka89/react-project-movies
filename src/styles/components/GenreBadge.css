@@ -1,4 +1,4 @@
-.link {
+.btn-box button{
     text-decoration: none;
     font-size: 20px;
     margin: 0 10px;
@@ -11,7 +11,7 @@
     border-radius: 10px;
 }
 
-.link:hover {
+.btn-box button:hover {
     background-color: darkcyan;
     color: #ffcc00;
 }

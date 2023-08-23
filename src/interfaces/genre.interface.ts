@@ -1,8 +1,8 @@
-export interface IGenreList<T> {
+export interface IGenreBadgePagination<T> {
     genres:T;
 }
 
-export interface IGenre {
+export interface IGenreBadge {
     id: number;
     name: string;
 }

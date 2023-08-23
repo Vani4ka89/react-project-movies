@@ -1,11 +1,11 @@
-import {IGenre} from "./genre.interface";
+import {IGenreBadge} from "./genre.interface";
 
 export interface IMovie {
     adult: boolean;
     backdrop_path: string;
     genre_ids: number[];
     id: number;
-    genres: IGenre[];
+    genres: IGenreBadge[];
     original_language: string;
     original_title: string;
     overview: string;

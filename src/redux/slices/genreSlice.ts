@@ -1,11 +1,11 @@
 import {createAsyncThunk, createSlice, isFulfilled, isRejectedWithValue} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
-import {IError, IGenre, IGenreList, IMovie, IPagination} from "../../interfaces";
+import {IError, IGenreBadge, IGenreBadgePagination, IMovie, IPagination} from "../../interfaces";
 import {genreService} from "../../services";
 
 interface IState {
-    genresList: IGenre[];
+    genresList: IGenreBadge[];
     error: IError;
     MoviesOfGenre: IMovie[];
 }
@@ -16,7 +16,7 @@ const initialState: IState = {
     MoviesOfGenre: []
 }
 
-const getAll = createAsyncThunk<IGenreList<IGenre[]>, void>(
+const getAll = createAsyncThunk<IGenreBadgePagination<IGenreBadge[]>, void>(
     'genreSlice/getAll',
     async (_, {rejectWithValue}) => {
         try {
