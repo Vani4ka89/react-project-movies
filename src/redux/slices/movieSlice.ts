@@ -3,6 +3,7 @@ import {createAsyncThunk, createSlice, isFulfilled, isRejectedWithValue} from "@
 
 import {IError, IGenreBadge, IMovie, IPagination} from "../../interfaces";
 import {movieService} from "../../services";
+import {IVideo, IVideoPagination} from "../../interfaces/video.interface";
 
 interface IState {
     movie: IMovie;
@@ -11,19 +12,23 @@ interface IState {
     page: number;
     error: IError;
     moviesOfGenre: IMovie[];
-    searchedMovies: IMovie[],
-    searchTerm: string | number,
+    searchedMovies: IMovie[];
+    searchTerm: string | number;
+    movieVideos: IVideo[];
+    videoId: number;
 }
 
 const initialState: IState = {
     movie: null,
     movies: [],
-    genresOfMovie: null,
+    genresOfMovie: [],
     page: null,
     error: null,
-    moviesOfGenre: null,
-    searchedMovies: null,
+    moviesOfGenre: [],
+    searchedMovies: [],
     searchTerm: null,
+    movieVideos: [],
+    videoId: null,
 }
 
 const getAll = createAsyncThunk<IPagination<IMovie[]>, { page: number }>(
@@ -65,11 +70,24 @@ const getAllOfGenre = createAsyncThunk<IPagination<IMovie[]>, { id: number }>(
     }
 )
 
-const search = createAsyncThunk<IPagination<IMovie[]>, { searchTerm: string | number, page:number }>(
+const search = createAsyncThunk<IPagination<IMovie[]>, { searchTerm: string | number, page: number }>(
     'movieSlice/search',
     async ({searchTerm, page}, {rejectWithValue}) => {
         try {
             const {data} = await movieService.search(searchTerm, page);
+            return data
+        } catch (e) {
+            const err = e as AxiosError;
+            return rejectWithValue(err.response.data)
+        }
+    }
+)
+
+const getVideo = createAsyncThunk<IVideoPagination<IVideo[]>, { movieId: number }>(
+    'movieSlice/getVideo',
+    async ({movieId}, {rejectWithValue}) => {
+        try {
+            const {data} = await movieService.getVideo(movieId);
             return data
         } catch (e) {
             const err = e as AxiosError;
@@ -111,6 +129,12 @@ const slice = createSlice({
                 state.searchedMovies = results
             })
 
+            .addCase(getVideo.fulfilled, (state, action) => {
+                const {results, id} = action.payload;
+                state.videoId = id;
+                state.movieVideos = results;
+            })
+
             .addMatcher(isFulfilled(), state => {
                 state.error = null
             })
@@ -128,7 +152,8 @@ const moviesActions = {
     getAll,
     getById,
     getAllOfGenre,
-    search
+    search,
+    getVideo
 }
 
 export {

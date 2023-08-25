@@ -2,6 +2,7 @@ import {IRes} from "../types";
 import {IMovie, IPagination} from "../interfaces";
 import {axiosService} from "./axios.service";
 import {accessToken, urls} from "../constants";
+import {IVideo, IVideoPagination} from "../interfaces/video.interface";
 
 class MovieService {
 
@@ -19,6 +20,10 @@ class MovieService {
 
     search(searchTerm: string | number, page: number): IRes<IPagination<IMovie[]>> {
         return axiosService.get(urls.movies.searchMovie(searchTerm), {params: {page}})
+    }
+
+    getVideo(movieId: number): IRes<IVideoPagination<IVideo[]>> {
+        return axiosService.get(urls.movies.video(movieId))
     }
 
     getAccessToken(): string {

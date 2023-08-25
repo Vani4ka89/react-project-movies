@@ -1,6 +1,6 @@
-export interface IVideoList<T> {
+export interface IVideoPagination<T> {
     id: number
-    results: T[];
+    results: T;
 }
 
 export interface IVideo {

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import Rating from "@mui/material/Rating";
 
 import {moviesActions} from "../../redux";
@@ -13,6 +13,7 @@ const MovieInfo = () => {
     const {movieId} = useParams<{ movieId: string }>();
     const {state: movie} = useAppLocation<IMovie>();
     const dispatch = useAppDispatch();
+    let navigate = useNavigate();
 
     useEffect(() => {
         if (movieId) {
@@ -24,6 +25,11 @@ const MovieInfo = () => {
         return
     }
     const {poster_path, title, original_title, overview, vote_average} = movie;
+
+    const getMovieVideos = () => {
+        navigate(`/movies/${movieId}/video`);
+        window.scrollTo({top: 0, behavior: 'smooth'})
+    }
 
     // const starConfig = {
     //     size: 18,
@@ -39,7 +45,7 @@ const MovieInfo = () => {
             </div>
             <div className={'content'}>
                 <h1>{original_title}</h1>
-                    <GenreBadge/>
+                <GenreBadge/>
                 <p>Rating</p>
                 <div>
                     <Rating
@@ -52,6 +58,7 @@ const MovieInfo = () => {
                 </div>
                 <p>Overview</p>
                 <h5>{overview}</h5>
+                <button className={'btn-play'} onClick={getMovieVideos}>PLAY</button>
             </div>
         </div>
     );
