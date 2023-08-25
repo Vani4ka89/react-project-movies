@@ -1,21 +1,27 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 import {useAppDispatch, useAppSelector} from "../../hooks";
-import {moviesActions} from "../../redux";
+import {moviesActions, themeActions} from "../../redux";
 import '../../styles/components/Header.css';
+import sun from '../../assets/images/free-icon-sun-5247953.png';
+import moon from '../../assets/images/free-icon-moon-3599494.png';
 
 const Header = () => {
 
     const dispatch = useAppDispatch();
     const {searchTerm} = useAppSelector(state => state.moviesReducer);
+    const {lightTheme} = useAppSelector(state => state.themeReducer);
+    const navigate = useNavigate();
 
     const movieSearch = async (e: any) => {
         e.preventDefault();
-        await Promise.all([
-            dispatch(moviesActions.setSearchTerm(e.target.value)),
-            dispatch(moviesActions.search({searchTerm}))
-        ])
+        dispatch(moviesActions.setSearchTerm(e.target.value));
+        navigate('/movies/search');
+    };
+
+    const setTheme = () => {
+        dispatch(themeActions.themeToggle())
     }
 
     return (
@@ -27,7 +33,7 @@ const Header = () => {
                  width: '100%',
                  backgroundColor: 'darkslategray',
                  background: 'black',
-                 opacity:'0.8'
+                 opacity: '0.8'
              }}>
             <div className="container-fluid">
                 <NavLink className="navbar-brand" to={'home'} style={{color: 'white'}}></NavLink>
@@ -43,8 +49,10 @@ const Header = () => {
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link active shine" aria-current="page" to={'/movies'}
-                    style={{color: 'white'}}>Movies</NavLink>
+                                     style={{color: 'white'}}>Movies</NavLink>
                         </li>
+                            <img className={'theme-img'} src={lightTheme ? moon : sun} onClick={setTheme}
+                                 alt={'theme-logo'}/>
                     </ul>
                     <div className={'logo'}>
                         <img
@@ -53,7 +61,8 @@ const Header = () => {
                         <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search"
                                    style={{color: "darkgreen", fontWeight: "bolder"}}
-                                   aria-label="Search" value={searchTerm}
+                                   aria-label="Search"
+                                   value={searchTerm}
                                    onChange={movieSearch}/>
                             {/*<button className="btn btn-outline-success" type="submit" onClick={movieSearch}>Search*/}
                             {/*</button>*/}

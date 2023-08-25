@@ -17,8 +17,8 @@ class MovieService {
         return axiosService.get(urls.movies.moviesOfGenre(id))
     }
 
-    search(searchTerm: string | number): IRes<IPagination<IMovie[]>> {
-        return axiosService.get(urls.movies.searchMovie(searchTerm))
+    search(searchTerm: string | number, page: number): IRes<IPagination<IMovie[]>> {
+        return axiosService.get(urls.movies.searchMovie(searchTerm), {params: {page}})
     }
 
     getAccessToken(): string {

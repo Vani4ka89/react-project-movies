@@ -26,9 +26,9 @@ const MoviesOfGenre: FC = () => {
     return (
         <div className={'moviesContainer'}>
             {
-                searchedMovies &&
-                searchedMovies.length > 0 ? searchedMovies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
-                    :
+                // searchedMovies &&
+                // searchedMovies.length > 0 ? searchedMovies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
+                //     :
                 MoviesOfGenre.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
             }
         </div>

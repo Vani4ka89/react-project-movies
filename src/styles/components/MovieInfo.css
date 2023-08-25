@@ -1,5 +1,5 @@
 .main-container {
-    height: calc(100vh - 56px);
+    height: 100%;
     width: 100%;
     padding: 30px;
     display: flex;
@@ -9,7 +9,7 @@
 
 .main-container img {
     height: 80%;
-    width: 80%;
+    width: 74.9%;
 }
 
 .content {

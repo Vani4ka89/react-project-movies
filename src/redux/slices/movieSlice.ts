@@ -65,11 +65,11 @@ const getAllOfGenre = createAsyncThunk<IPagination<IMovie[]>, { id: number }>(
     }
 )
 
-const search = createAsyncThunk<IPagination<IMovie[]>, { searchTerm: string | number }>(
+const search = createAsyncThunk<IPagination<IMovie[]>, { searchTerm: string | number, page:number }>(
     'movieSlice/search',
-    async ({searchTerm}, {rejectWithValue}) => {
+    async ({searchTerm, page}, {rejectWithValue}) => {
         try {
-            const {data} = await movieService.search(searchTerm);
+            const {data} = await movieService.search(searchTerm, page);
             return data
         } catch (e) {
             const err = e as AxiosError;
