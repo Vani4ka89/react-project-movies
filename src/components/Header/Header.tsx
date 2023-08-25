@@ -17,7 +17,11 @@ const Header = () => {
     const movieSearch = async (e: any) => {
         e.preventDefault();
         dispatch(moviesActions.setSearchTerm(e.target.value));
-        navigate('/movies/search');
+        if (e.target.value) {
+            navigate('/movies/search');
+        } else {
+            navigate('/movies');
+        }
     };
 
     const setTheme = () => {
@@ -51,8 +55,8 @@ const Header = () => {
                             <NavLink className="nav-link active shine" aria-current="page" to={'/movies'}
                                      style={{color: 'white'}}>Movies</NavLink>
                         </li>
-                            <img className={'theme-img'} src={lightTheme ? moon : sun} onClick={setTheme}
-                                 alt={'theme-logo'}/>
+                        <img className={'theme-img'} src={lightTheme ? moon : sun} onClick={setTheme}
+                             alt={'theme-logo'}/>
                     </ul>
                     <div className={'logo'}>
                         <img

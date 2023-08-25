@@ -16,7 +16,7 @@ const GenresBadgesList: FC = () => {
 
     return (
         <div className={'container'}>
-            {genresList.map(badge => <Badge key={badge.id} badge={badge}/>)};
+            {genresList.map(badge => <Badge key={badge.id} badge={badge}/>)}
         </div>
     );
 };
