@@ -9,7 +9,7 @@ import '../../styles/components/MoviesList.css'
 const MoviesList: FC = () => {
 
     const dispatch = useAppDispatch();
-    const {movies, searchedMovies, searchTerm} = useAppSelector(state => state.moviesReducer);
+    const {movies} = useAppSelector(state => state.moviesReducer);
     const [query, ] = useSearchParams();
 
     useEffect(() => {

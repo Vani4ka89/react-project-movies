@@ -12,7 +12,6 @@ const MoviesOfGenre: FC = () => {
     const dispatch = useAppDispatch();
     const [query, _] = useSearchParams();
     const {MoviesOfGenre} = useAppSelector(state => state.genresReducer);
-    const {searchedMovies} = useAppSelector(state => state.moviesReducer);
 
     useEffect(() => {
         const currentPage = +query.get('page') ? +query.get('page') : 1;
