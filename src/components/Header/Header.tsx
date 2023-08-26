@@ -21,8 +21,13 @@ const Header = () => {
             navigate('/movies/search');
         } else {
             navigate('/movies');
+            window.scrollTo({top: 0, behavior: 'smooth'})
         }
     };
+
+    const doneScroll = () => {
+        window.scrollTo({top: 0, behavior: 'smooth'})
+    }
 
     const setTheme = () => {
         dispatch(themeActions.themeToggle())
@@ -52,7 +57,8 @@ const Header = () => {
                             {/*<NavLink className="nav-link shine" to={''} style={{color: 'white'}}>Home</NavLink>*/}
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link active shine" aria-current="page" to={'/movies'}
+                            <NavLink className="nav-link active shine" onClick={doneScroll} aria-current="page"
+                                     to={'/movies'}
                                      style={{color: 'white'}}>Movies</NavLink>
                         </li>
                         <img className={'theme-img'} src={lightTheme ? moon : sun} onClick={setTheme}

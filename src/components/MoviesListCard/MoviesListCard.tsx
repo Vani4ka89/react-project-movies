@@ -20,13 +20,14 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
 
     const imgPath = backdrop_path ? `${posterBaseUrl}${backdrop_path}` : '';
 
-    const getAllMovies = () => {
+    const getMovieInfo = () => {
         navigate(`/movies/${id}`, {state: {...movie}});
+        window.scrollTo({top: 0, behavior: 'smooth'})
     }
 
     return (
         <div key={id}>{backdrop_path &&
-            <div className={css.card} onClick={getAllMovies}>
+            <div className={css.card} onClick={getMovieInfo}>
                 <div className={css.imageBlock}>
                     <img src={imgPath} alt={title}/>
                 </div>
