@@ -12,7 +12,7 @@ const GenreBadge = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(moviesActions.getById({movieId}))
+        dispatch(moviesActions.getById({movie_id: +movieId}))
     }, [dispatch, movieId])
 
     if (!movie) {

@@ -10,8 +10,8 @@ class MovieService {
         return axiosService.get(urls.movies.discover, {params: {page}})
     }
 
-    getById(movieId: string): IRes<IMovie> {
-        return axiosService.get(urls.movies.movieById(movieId))
+    getById(movie_id: number): IRes<IMovie> {
+        return axiosService.get(urls.movies.details(movie_id))
     }
 
     getAllOfGenre(id: number): IRes<IPagination<IMovie[]>> {
@@ -23,7 +23,7 @@ class MovieService {
     }
 
     getVideo(movieId: number): IRes<IVideoPagination<IVideo[]>> {
-        return axiosService.get(urls.movies.video(movieId))
+        return axiosService.get(urls.movies.videos(movieId))
     }
 
     getAccessToken(): string {

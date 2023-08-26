@@ -12,12 +12,13 @@ const Videos = () => {
     const trailers = movieVideos.filter(trailer => trailer.type === 'Trailer');
 
     useEffect(() => {
-        dispatch(moviesActions.getVideo({movieId: +movieId}))
+        dispatch(moviesActions.getVideo({movie_id: +movieId}))
     }, [dispatch, movieId]);
 
     return (
         <div>
             {trailers.map(video => <Video key={video.id} video={video}/>)}
+            {/*{<Video key={trailers[0].id} video={trailers[0]}/>}*/}
         </div>
     );
 };

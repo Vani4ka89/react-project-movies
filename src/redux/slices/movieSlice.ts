@@ -44,11 +44,11 @@ const getAll = createAsyncThunk<IPagination<IMovie[]>, { page: number }>(
     }
 )
 
-const getById = createAsyncThunk<IMovie, { movieId: string }>(
+const getById = createAsyncThunk<IMovie, { movie_id: number }>(
     'movieSlice/getById',
-    async ({movieId}, {rejectWithValue}) => {
+    async ({movie_id}, {rejectWithValue}) => {
         try {
-            const {data: movie} = await movieService.getById(movieId);
+            const {data: movie} = await movieService.getById(movie_id);
             return movie
         } catch (e) {
             const err = e as AxiosError
@@ -83,11 +83,11 @@ const search = createAsyncThunk<IPagination<IMovie[]>, { searchTerm: string | nu
     }
 )
 
-const getVideo = createAsyncThunk<IVideoPagination<IVideo[]>, { movieId: number }>(
+const getVideo = createAsyncThunk<IVideoPagination<IVideo[]>, { movie_id: number }>(
     'movieSlice/getVideo',
-    async ({movieId}, {rejectWithValue}) => {
+    async ({movie_id}, {rejectWithValue}) => {
         try {
-            const {data} = await movieService.getVideo(movieId);
+            const {data} = await movieService.getVideo(movie_id);
             return data
         } catch (e) {
             const err = e as AxiosError;
