@@ -15,7 +15,6 @@ interface IState {
     searchedMovies: IMovie[];
     searchTerm: string | number;
     movieVideos: IVideo[];
-    videoId: number;
 }
 
 const initialState: IState = {
@@ -28,7 +27,6 @@ const initialState: IState = {
     searchedMovies: [],
     searchTerm: null,
     movieVideos: [],
-    videoId: null,
 }
 
 const getAll = createAsyncThunk<IPagination<IMovie[]>, { page: number }>(
@@ -130,8 +128,7 @@ const slice = createSlice({
             })
 
             .addCase(getVideo.fulfilled, (state, action) => {
-                const {results, id} = action.payload;
-                state.videoId = id;
+                const {results} = action.payload;
                 state.movieVideos = results;
             })
 
@@ -154,9 +151,9 @@ const moviesActions = {
     getAllOfGenre,
     search,
     getVideo
-}
+};
 
 export {
     moviesReducer,
     moviesActions
-}
+};
