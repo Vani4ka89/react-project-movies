@@ -17,7 +17,7 @@ const Videos = () => {
 
     return (
         <div>
-            {trailers.map(video => <Video key={video.id} video={video}/>)}
+            {trailers.map(trailer => <Video key={trailer.id} trailer={trailer}/>)}
             {/*{<Video key={trailers[0].id} video={trailers[0]}/>}*/}
         </div>
     );

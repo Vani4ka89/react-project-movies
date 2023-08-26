@@ -5,11 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {IVideo} from "../../interfaces/video.interface";
 
 interface IProps {
-    video: IVideo;
+    trailer: IVideo;
 }
 
-const Video: FC<IProps> = ({video}) => {
-    const {key, type} = video;
+const Video: FC<IProps> = ({trailer}) => {
+    const {key, type} = trailer;
 
     return (
         <div>
