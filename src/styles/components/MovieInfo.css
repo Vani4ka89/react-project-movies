@@ -7,6 +7,10 @@
     align-items: center;
 }
 
+.main-container h1 {
+    margin-bottom: 30px;
+}
+
 .main-container img {
     height: 80%;
     width: 74.9%;
